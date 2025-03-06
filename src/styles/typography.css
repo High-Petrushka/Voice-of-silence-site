@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'Roboto';
+    src: 
+        url('./fonts/static/Roboto-Regular.ttf') format('woff2'),
+        url('./fonts/static/Roboto-Regular.ttf') format('woff'),
+        url('./fonts/static/Roboto-Regular.ttf') format('svg');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: 
+        url('./fonts/static/Roboto-Medium.ttf') format('woff2'),
+        url('./fonts/static/Roboto-Medium.ttf') format('woff'),
+        url('./fonts/static/Roboto-Medium.ttf') format('svg');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: 
+        url('./fonts/static/Roboto-SemiBold.ttf') format('woff2'),
+        url('./fonts/static/Roboto-SemiBold.ttf') format('woff'),
+        url('./fonts/static/Roboto-SemiBold.ttf') format('svg');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: 
+        url('./fonts/static/Roboto-Bold.ttf') format('woff2'),
+        url('./fonts/static/Roboto-Bold.ttf') format('woff'),
+        url('./fonts/static/Roboto-Bold.ttf') format('svg');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: 
+        url('./fonts/static/Roboto-ExtraBold.ttf') format('woff2'),
+        url('./fonts/static/Roboto-ExtraBold.ttf') format('woff'),
+        url('./fonts/static/Roboto-ExtraBold.ttf') format('svg');
+    font-weight: 800;
+}
+
+h1 {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--font-color);
+    line-height: 1.1;
+    letter-spacing: -0.04;
+}

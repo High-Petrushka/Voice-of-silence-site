@@ -13,4 +13,45 @@ html {
 body {
     min-height: 100vh;
     width: 100vw;
+
+    word-wrap: normal;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    color: var(--font-color);
+}
+
+button {
+    background: transparent;
+
+    padding: 0.5rem 1.5rem;
+    border: 1px solid currentColor;
+    border-radius: 10rem;
+
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -.02;
+
+    cursor: pointer;
+    transition: 0.35s;
+}
+
+.reversed__btn {
+    color: var(--reversed-font);
+}
+
+button:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--reversed-font);
+}
+
+@media screen and (width > 1024px) {
+    button {
+        padding: 1rem 3rem;
+        border: 2px solid currentColor;
+
+        font-size: 1.8rem;
+        font-weight: 500;
+        line-height: 1.3;
+    }
 }

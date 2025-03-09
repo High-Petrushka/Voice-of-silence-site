@@ -30,3 +30,11 @@
   grid-template-rows: auto 1fr auto;
   row-gap: 10rem;
 }
+
+.menu__cont {
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  justify-content: center;
+}

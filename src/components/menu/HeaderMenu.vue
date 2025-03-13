@@ -1,7 +1,23 @@
 <script setup>
+import MobileMenu from './MobileMenu.vue';
+
+import { reactive } from 'vue';
+
+const local = reactive({
+    menuPosition: '300',
+});
+
 const emit = defineEmits([
     'changePage',
 ]);
+
+function openMenu() {
+    local.menuPosition = '0';
+}
+
+function closeMenu() {
+    local.menuPosition = '300'
+}
 </script>
 
 <template>
@@ -44,11 +60,17 @@ const emit = defineEmits([
                     @click="$emit('changePage', 6)">
                 </div>
                 <div class="menu__item" id="hamburger">
-                    <img src="../../assets/icons/hamburger.png" alt="hamburger menu icon">
+                    <img
+                    src="../../assets/icons/hamburger.png"
+                    alt="hamburger menu icon"
+                    @click="openMenu">
                 </div>
             </div>
         </div>
     </div>
+    <MobileMenu 
+    @closeSide="closeMenu"
+    :position="local.menuPosition" />
 </template>
 
 <style scoped>
@@ -65,6 +87,9 @@ const emit = defineEmits([
     justify-content: space-between;
 
     position: fixed;
+    top: var(--header-position);
+
+    transition: 0.5s ease-out;
 }
 
 .logo {
@@ -84,25 +109,6 @@ const emit = defineEmits([
 
     display: none;
     gap: 4rem;
-}
-
-.menu__link {
-    width: fit-content;
-    height: fit-content;
-
-    cursor: pointer;
-
-    position: relative;
-}
-
-.menu__link a {
-    text-decoration: none;
-
-    font-size: 1.8rem;
-    font-weight: 400;
-    line-height: 1.3;
-    letter-spacing: -0.02rem;
-    color: var(--font-color);
 }
 
 .menu__link a::before {

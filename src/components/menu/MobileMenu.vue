@@ -3,50 +3,45 @@ const props = defineProps({
     position: String,
 });
 
-const emit = defineEmits([
-    'closeSide'
-]);
+const emit = defineEmits(["closeSide"]);
 </script>
 
 <template>
-    <div class="menu__cont" :style="{right: `-${props.position}px`}">
+    <div class="menu__cont" :style="{ right: `-${props.position}px` }">
         <div class="cross__cont">
-            <img
-            src="../../assets/icons/close.png"
-            alt="Cross image"
-            @click="$emit('closeSide')">
+            <img src="../../assets/icons/close.png" alt="Cross image" @click="$emit('closeSide')" />
         </div>
         <div class="links__cont">
             <div class="link__box">
                 <div class="link__img">
-                    <img src="../../assets/menu/headphones.png" alt="Menu link image">
+                    <img src="../../assets/menu/headphones.png" alt="Menu link image" />
                 </div>
                 <div class="menu__link">
-                    <a href="#">Headphones</a>
+                    <RouterLink :to="{ name: 'Headphones' }">Headphones</RouterLink>
                 </div>
             </div>
             <div class="link__box">
                 <div class="link__img">
-                    <img src="../../assets/menu/amplifier.png" alt="Menu link image">
+                    <img src="../../assets/menu/amplifier.png" alt="Menu link image" />
                 </div>
                 <div class="menu__link">
-                    <a href="#">Speakers</a>
+                    <RouterLink :to="{ name: 'Speakers' }">Speakers</RouterLink>
                 </div>
             </div>
             <div class="link__box">
                 <div class="link__img">
-                    <img src="../../assets/menu/music-player.png" alt="Menu link image">
+                    <img src="../../assets/menu/music-player.png" alt="Menu link image" />
                 </div>
                 <div class="menu__link">
-                    <a href="#">Accessories</a>
+                    <RouterLink :to="{ name: 'Accessories' }">Accessories</RouterLink>
                 </div>
             </div>
             <div class="link__box">
                 <div class="link__img">
-                    <img src="../../assets/menu/vynil.png" alt="Menu link image">
+                    <img src="../../assets/menu/vynil.png" alt="Menu link image" />
                 </div>
                 <div class="menu__link">
-                    <a href="#">Vinyl</a>
+                    <RouterLink :to="{ name: 'Vinyl' }">Vinyl</RouterLink>
                 </div>
             </div>
         </div>

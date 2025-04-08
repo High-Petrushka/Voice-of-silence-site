@@ -1,22 +1,21 @@
 <script setup>
-import MobileMenu from './MobileMenu.vue';
+import { RouterLink } from "vue-router";
+import MobileMenu from "./MobileMenu.vue";
 
-import { reactive } from 'vue';
+import { reactive } from "vue";
 
 const local = reactive({
-    menuPosition: '300',
+    menuPosition: "300",
 });
 
-const emit = defineEmits([
-    'changePage',
-]);
+const emit = defineEmits(["changePage"]);
 
 function openMenu() {
-    local.menuPosition = '0';
+    local.menuPosition = "0";
 }
 
 function closeMenu() {
-    local.menuPosition = '300'
+    local.menuPosition = "300";
 }
 </script>
 
@@ -24,53 +23,36 @@ function closeMenu() {
     <div class="menu__cont">
         <div class="menu">
             <div class="logo__cont">
-                <a
-                class="logo"
-                @click.prevent="$emit('changePage', 0)">V'oS</a>
+                <RouterLink :to="{ name: 'Main' }" class="logo">V'oS </RouterLink>
             </div>
             <div class="link__bar">
                 <div class="menu__link">
-                    <a
-                    href="#"
-                    @click.prevent="$emit('changePage', 1)">Headphones</a>
+                    <RouterLink :to="{ name: 'Headphones' }">Headphones</RouterLink>
                 </div>
                 <div class="menu__link">
-                    <a
-                    href="#"
-                    @click.prevent="$emit('changePage', 2)">Speakers</a>
+                    <RouterLink :to="{ name: 'Speakers' }">Speakers</RouterLink>
                 </div>
                 <div class="menu__link">
-                    <a
-                    href="#"
-                    @click.prevent="$emit('changePage', 3)">Accessories</a>
+                    <RouterLink :to="{ name: 'Accessories' }">Accessories</RouterLink>
                 </div>
                 <div class="menu__link">
-                    <a
-                    href="#"
-                    @click.prevent="$emit('changePage', 4)">Vinyl</a>
+                    <RouterLink :to="{ name: 'Vinyl' }">Vinyl</RouterLink>
                 </div>
             </div>
             <div class="menu__el">
                 <div class="menu__item">
-                    <img src="../../assets/icons/user.png" alt="User icon"
-                    @click="$emit('changePage', 5)">
+                    <img src="../../assets/icons/user.png" alt="User icon" @click="$emit('changePage', 5)" />
                 </div>
                 <div class="menu__item">
-                    <img src="../../assets/icons/online-shopping.png" alt="Cart icon"
-                    @click="$emit('changePage', 6)">
+                    <img src="../../assets/icons/online-shopping.png" alt="Cart icon" @click="$emit('changePage', 6)" />
                 </div>
                 <div class="menu__item" id="hamburger">
-                    <img
-                    src="../../assets/icons/hamburger.png"
-                    alt="hamburger menu icon"
-                    @click="openMenu">
+                    <img src="../../assets/icons/hamburger.png" alt="hamburger menu icon" @click="openMenu" />
                 </div>
             </div>
         </div>
     </div>
-    <MobileMenu 
-    @closeSide="closeMenu"
-    :position="local.menuPosition" />
+    <MobileMenu @closeSide="closeMenu" :position="local.menuPosition" />
 </template>
 
 <style scoped>
@@ -98,7 +80,8 @@ function closeMenu() {
     font-size: 2.8rem;
     font-weight: 500;
     line-height: 1.2;
-    letter-spacing: .2rem;
+    letter-spacing: 0.2rem;
+    color: var(--font-color);
 
     cursor: pointer;
 }
@@ -112,7 +95,7 @@ function closeMenu() {
 }
 
 .menu__link a::before {
-    content: '';
+    content: "";
 
     width: 0%;
     height: 2px;

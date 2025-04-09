@@ -9,6 +9,7 @@
   --background-color: rgba(255, 255, 255, 1);
   --font-color: rgba(46, 46, 46, 1);
   --reversed-font: rgba(255, 255, 255, 1);
+  --footer-font: rgba(191, 191, 191, 1);
   --element-color: rgba(46, 46, 46, 1);
   --card-color: rgba(224, 224, 224, 1);
   --accent-color: rgba(216, 64, 64, 1);
@@ -24,8 +25,6 @@
 #app {
   width: 100%;
   min-height: 100vh;
-
-  padding: 0 2rem;
 
   display: grid;
   grid-template-columns: 1fr;

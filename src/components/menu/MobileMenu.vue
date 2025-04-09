@@ -17,7 +17,7 @@ const emit = defineEmits(["closeSide"]);
                     <img src="../../assets/menu/headphones.png" alt="Menu link image" />
                 </div>
                 <div class="menu__link">
-                    <RouterLink :to="{ name: 'Headphones' }">Headphones</RouterLink>
+                    <RouterLink :to="{ name: 'Headphones' }" @click="$emit('closeSide')">Headphones</RouterLink>
                 </div>
             </div>
             <div class="link__box">
@@ -25,7 +25,7 @@ const emit = defineEmits(["closeSide"]);
                     <img src="../../assets/menu/amplifier.png" alt="Menu link image" />
                 </div>
                 <div class="menu__link">
-                    <RouterLink :to="{ name: 'Speakers' }">Speakers</RouterLink>
+                    <RouterLink :to="{ name: 'Speakers' }" @click="$emit('closeSide')">Speakers</RouterLink>
                 </div>
             </div>
             <div class="link__box">
@@ -33,7 +33,7 @@ const emit = defineEmits(["closeSide"]);
                     <img src="../../assets/menu/music-player.png" alt="Menu link image" />
                 </div>
                 <div class="menu__link">
-                    <RouterLink :to="{ name: 'Accessories' }">Accessories</RouterLink>
+                    <RouterLink :to="{ name: 'Accessories' }" @click="$emit('closeSide')">Accessories</RouterLink>
                 </div>
             </div>
             <div class="link__box">
@@ -41,7 +41,7 @@ const emit = defineEmits(["closeSide"]);
                     <img src="../../assets/menu/vynil.png" alt="Menu link image" />
                 </div>
                 <div class="menu__link">
-                    <RouterLink :to="{ name: 'Vinyl' }">Vinyl</RouterLink>
+                    <RouterLink :to="{ name: 'Vinyl' }" @click="$emit('closeSide')">Vinyl</RouterLink>
                 </div>
             </div>
         </div>

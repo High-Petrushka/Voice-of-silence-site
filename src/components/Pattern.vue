@@ -25,8 +25,6 @@
     margin: 0 auto;
     padding: 2rem;
 
-    border: 3px dashed #222;
-
     display: grid;
     place-items: center;
     gap: 2rem;

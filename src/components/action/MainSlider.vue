@@ -18,10 +18,13 @@ function changeImage() {
   }
 
   local.sliderOrder[local.curImg] = 1;
+  console.log(local.curImg);
 }
 
+let intervalId;
+
 onMounted(() => {
-  let intervalId = setInterval(() => {
+  intervalId = setInterval(() => {
     changeImage();
   }, 10000);
 });

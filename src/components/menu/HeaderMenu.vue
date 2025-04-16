@@ -70,6 +70,7 @@ function closeMenu() {
 
     position: fixed;
     top: var(--header-position);
+    z-index: 20;
 
     transition: 0.5s ease-out;
 }

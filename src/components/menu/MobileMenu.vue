@@ -56,7 +56,7 @@ const emit = defineEmits(["closeSide"]);
     background: var(--background-color);
 
     position: fixed;
-    z-index: 10;
+    z-index: 30;
 
     overflow-y: hidden;
 

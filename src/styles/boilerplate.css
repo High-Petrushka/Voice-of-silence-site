@@ -1,57 +1,57 @@
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    min-height: 100vh;
-    width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
 
-    word-wrap: normal;
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    color: var(--font-color);
+  word-wrap: normal;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  color: var(--font-color);
 }
 
 button {
-    background: transparent;
+  background: transparent;
 
-    padding: 0.5rem 1.5rem;
-    border: 1px solid currentColor;
-    border-radius: 10rem;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid currentColor;
+  border-radius: 10rem;
 
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -.02;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02;
 
-    cursor: pointer;
-    transition: 0.35s;
+  cursor: pointer;
+  transition: 0.35s;
 }
 
 .reversed__btn {
-    color: var(--reversed-font);
+  color: var(--reversed-font);
 }
 
 button:hover {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: var(--reversed-font);
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--reversed-font);
 }
 
 @media screen and (width > 1024px) {
-    button {
-        padding: 1rem 3rem;
-        border: 2px solid currentColor;
+  button {
+    padding: 1rem 3rem;
+    border: 2px solid currentColor;
 
-        font-size: 1.8rem;
-        font-weight: 500;
-        line-height: 1.3;
-    }
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
 }

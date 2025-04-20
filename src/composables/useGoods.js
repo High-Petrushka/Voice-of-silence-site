@@ -15,7 +15,7 @@ const headphonesList = ref([
       "Carry your headphones effortlessly in the redesigned case",
     ],
     type: "Headphones",
-    image: "../../assets/products/headphones/sony-wh1000xm5-black.jpg",
+    image: "/src/assets/products/headphones/sony-wh1000xm5-black.jpg",
   },
   {
     name: "Marshall Major IV",
@@ -29,7 +29,7 @@ const headphonesList = ref([
       "Included components: Major IV Headphones, 3.5mm audio cord, User Manual and legal and safety information, USB-C charging cable",
     ],
     type: "Headphones",
-    image: "../../assets/products/headphones/marshall_major_iv_black.jpg",
+    image: "/src/assets/products/headphones/marshall_major_iv_black.jpg",
   },
 ]);
 

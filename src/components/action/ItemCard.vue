@@ -10,7 +10,8 @@ const props = defineProps({
 <template>
   <div class="card__box">
     <div class="image__box">
-      <img class="item__img" src="../../assets/products/headphones/sony_wh1000xm5_black.jpg" alt="Product image" />
+      <img class="item__img" :src="props.itemImg" alt="Product image" />
+
     </div>
     <div class="title__box">
       <div class="type__box">

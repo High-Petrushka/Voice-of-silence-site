@@ -2,6 +2,8 @@
 import MainSlider from "../action/MainSlider.vue";
 import Pattern from "../Pattern.vue";
 import AdCard from "../action/AdCard.vue";
+import LocationCard from "../action/LocationCard.vue";
+
 import { reactive } from "vue";
 
 const local = reactive({
@@ -15,7 +17,12 @@ const local = reactive({
 
 <template>
   <MainSlider />
-  <AdCard :adTitle="local.adInfo.title" :adText="local.adInfo.text" :adImg="local.adInfo.image" />
+  <AdCard
+    :adTitle="local.adInfo.title"
+    :adText="local.adInfo.text"
+    :adImg="local.adInfo.image"
+  />
+  <LocationCard />
   <Pattern />
 </template>
 

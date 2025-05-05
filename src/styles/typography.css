@@ -108,6 +108,13 @@ span {
   text-decoration: none;
 }
 
+.error__text {
+  font-size: 1.4rem;
+  color: var(--accent-color);
+
+  transition: opacity 0.35s ease;
+}
+
 @media screen and (width > 1024px) {
   h1 {
     font-size: 9.6rem;

@@ -10,7 +10,7 @@ import { RouterView } from "vue-router";
         <HeaderMenu @change-page="pageChanger" />
     </header>
 
-    <main>
+    <main class="main__cont">
         <RouterView />
     </main>
 

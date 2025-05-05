@@ -14,6 +14,7 @@
   --card-color: #f4f4f4;
   --card-font: #737373;
   --accent-color: rgba(216, 64, 64, 1);
+  --form-btn-color: rgba(173, 173, 173, 1);
 
   --header-position: 0;
 
@@ -66,4 +67,16 @@
 
   margin: 0 auto;
   padding: 2rem;
+}
+
+.main__cont {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media screen and (width > 1024px) {
+  .main__cont {
+    gap: 6rem;
+  }
 }

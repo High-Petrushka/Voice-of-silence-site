@@ -175,6 +175,11 @@
 
   .location__text {
     font-size: 1.6rem;
+
+    height: 100%;
+
+    display: grid;
+    align-items: end;
   }
 }
 </style>

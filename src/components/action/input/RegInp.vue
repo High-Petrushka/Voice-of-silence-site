@@ -31,48 +31,40 @@ function sendData() {
 <template>
   <div class="inp__cont">
     <div class="inp__box">
-      <input
-        type="text"
-        :class="{ error__inp: props.emailError.isOccurred }"
-        v-model="local.emailInp"
-        placeholder="Your email"
-        @input="sendData"
-      />
-      <div
-        class="error__box"
-        :class="{ error__active: props.emailError.isOccurred }"
-      >
-        <p
-          class="error__text"
-          :class="{ active__text: props.emailError.isOccurred }"
-        >
+      <input type="text" :class="{ error__inp: props.emailError.isOccurred }" v-model="local.emailInp"
+        placeholder="Your email" @input="sendData" />
+      <div class="error__box" :class="{ error__active: props.emailError.isOccurred }">
+        <p class="error__text" :class="{ active__text: props.emailError.isOccurred }">
           {{ props.emailError.text }}
         </p>
       </div>
     </div>
     <div class="inp__box">
-      <input
-        type="password"
-        v-model="local.passInp"
-        placeholder="Password"
-        @input="sendData"
-      />
+      <input type="password" :class="{ error__inp: props.passError.isOccurred }" v-model="local.passInp"
+        placeholder="Password" @input="sendData" />
+      <div class="error__box" :class="{ error__active: props.passError.isOccurred }">
+        <p class="error__text" :class="{ active__text: props.passError.isOccurred }">
+          {{ props.passError.text }}
+        </p>
+      </div>
     </div>
     <div class="inp__box">
-      <input
-        type="text"
-        v-model="local.firstNameInp"
-        placeholder="First name"
-        @input="sendData"
-      />
+      <input type="text" :class="{ error__inp: props.nameError.isOccurred }" v-model="local.firstNameInp"
+        placeholder="First name" @input="sendData" />
+      <div class="error__box" :class="{ error__active: props.nameError.isOccurred }">
+        <p class="error__text" :class="{ active__text: props.nameError.isOccurred }">
+          {{ props.nameError.text }}
+        </p>
+      </div>
     </div>
     <div class="inp__box">
-      <input
-        type="text"
-        v-model="local.lastNameInp"
-        placeholder="Last name"
-        @input="sendData"
-      />
+      <input type="text" :class="{ error__inp: props.surnameError.isOccurred }" v-model="local.lastNameInp"
+        placeholder="Last name" @input="sendData" />
+      <div class="error__box" :class="{ error__active: props.surnameError.isOccurred }">
+        <p class="error__text" :class="{ active__text: props.surnameError.isOccurred }">
+          {{ props.surnameError.text }}
+        </p>
+      </div>
     </div>
   </div>
 </template>

@@ -44,6 +44,15 @@ function clearAuth() {
 function clearReg() {
   local.error.regError.emailError.text = "";
   local.error.regError.emailError.isOccurred = false;
+
+  local.error.regError.passError.text = "";
+  local.error.regError.passError.isOccurred = false;
+
+  local.error.regError.nameError.text = "";
+  local.error.regError.nameError.isOccurred = false;
+
+  local.error.regError.surnameError.text = "";
+  local.error.regError.surnameError.isOccurred = false;
 }
 
 function reciveAuth(eData, pData) {
@@ -109,22 +118,40 @@ function comparePass() {
       local.error.regError.passError.text = "Required to be filled!";
       local.error.regError.passError.isOccurred = true;
       break;
+    case "LengthError":
+      local.error.regError.passError.text = "Should include at least 4 signs!";
+      local.error.regError.passError.isOccurred = true;
+      break;
+    case "PatternError":
+      local.error.regError.passError.text = "Too weak password!";
+      local.error.regError.passError.isOccurred = true;
+      break;
   }
 }
 
-function compareName() {
-  const check = useUsers().checkPass(local.regData.firstName);
-}
+function compareName(str, err) {
+  const check = useUsers().checkName(local.regData[`${str}`]);
 
-function compareSurname() {
-  const check = useUsers().checkPass(local.regData.lastName);
+  switch (check) {
+    case "OK":
+      console.log("Text OK");
+      break;
+    case "EmptyError":
+      local.error.regError[`${err}`].text = "Required to be filled!";
+      local.error.regError[`${err}`].isOccurred = true;
+      break;
+    case "PatternError":
+      local.error.regError[`${err}`].text = "Should include only letters!";
+      local.error.regError[`${err}`].isOccurred = true;
+      break;
+  }
 }
 
 function regFunc() {
   compareEmail();
   comparePass();
-  compareName();
-  compareSurname();
+  compareName("firstName", "nameError");
+  compareName("lastName", "surnameError");
 }
 
 function btnAction(act) {

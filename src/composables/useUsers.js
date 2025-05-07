@@ -18,7 +18,9 @@ const userEntiy = {
 }
 */
 
-const emailPattern = /[\w\-\.]+@([\w-]+\.)+[\w-]{2,5}/
+const emailPattern = /[\w\-\.]+@([\w-]+\.)+[\w-]{2,5}/;
+const passPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/;
+const namePattern = /^[A-Za-z]+$/;
 
 // Trying to get an existing list of users, else creating a new DB instance
 try {
@@ -69,7 +71,15 @@ function checkPass(password) {
   if (password == "") {
     return "EmptyError";
   } else {
-    pass;
+    if (password.length < 4) {
+      return "LengthError";
+    } else {
+      if (!passPattern.test(password)) {
+        return "PatternError";
+      } else {
+        return "OK";
+      }
+    }
   }
 }
 
@@ -77,7 +87,11 @@ function checkName(text) {
   if (text == "") {
     return "EmptyError";
   } else {
-    pass;
+    if (!namePattern.test(text)) {
+      return "PatternError";
+    } else {
+      return "OK";
+    }
   }
 }
 

@@ -57,7 +57,7 @@ input {
 
   font-size: 1.6rem;
 
-  transition: border-bottom 0.35s ease;
+  transition: border-bottom 0.5s ease;
 }
 
 .error__inp {
@@ -75,8 +75,8 @@ input {
 
   overflow: hidden;
   transition:
-    height 0.35s ease-out,
-    margin-top 0.35s ease-out;
+    height 0.5s ease,
+    margin-top 0.5s ease;
 }
 
 @media screen and (width > 1024px) {

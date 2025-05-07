@@ -18,6 +18,8 @@ const userEntiy = {
 }
 */
 
+const emailPattern = /[\w\-\.]+@([\w-]+\.)+[\w-]{2,5}/
+
 // Trying to get an existing list of users, else creating a new DB instance
 try {
   if (localStorage.getItem("user") === null) {
@@ -51,6 +53,34 @@ function compareUser(email, pass) {
   return "LoginError";
 }
 
+function checkEmail(email) {
+  if (email == "") {
+    return "EmptyError";
+  } else {
+    if (!emailPattern.test(email)) {
+      return "PatternError";
+    } else {
+      return "OK";
+    }
+  }
+}
+
+function checkPass(password) {
+  if (password == "") {
+    return "EmptyError";
+  } else {
+    pass;
+  }
+}
+
+function checkName(text) {
+  if (text == "") {
+    return "EmptyError";
+  } else {
+    pass;
+  }
+}
+
 function addUser(usrEmail, usrPass, firstName, lastName) {
   let userId;
 
@@ -71,5 +101,5 @@ function addUser(usrEmail, usrPass, firstName, lastName) {
 }
 
 export default function useUsers() {
-  return { userList, compareUser, addUser };
+  return { userList, compareUser, addUser, checkEmail, checkPass, checkName };
 }

@@ -2,7 +2,10 @@
 import { reactive } from "vue";
 
 const props = defineProps({
-  errorKey: {},
+  emailError: {},
+  passError: {},
+  nameError: {},
+  surnameError: {},
 });
 
 const emit = defineEmits(["regInput"]);
@@ -28,16 +31,48 @@ function sendData() {
 <template>
   <div class="inp__cont">
     <div class="inp__box">
-      <input type="text" v-model="local.emailInp" placeholder="Your email" @input="sendData" />
+      <input
+        type="text"
+        :class="{ error__inp: props.emailError.isOccurred }"
+        v-model="local.emailInp"
+        placeholder="Your email"
+        @input="sendData"
+      />
+      <div
+        class="error__box"
+        :class="{ error__active: props.emailError.isOccurred }"
+      >
+        <p
+          class="error__text"
+          :class="{ active__text: props.emailError.isOccurred }"
+        >
+          {{ props.emailError.text }}
+        </p>
+      </div>
     </div>
     <div class="inp__box">
-      <input type="password" v-model="local.passInp" placeholder="Password" @input="sendData" />
+      <input
+        type="password"
+        v-model="local.passInp"
+        placeholder="Password"
+        @input="sendData"
+      />
     </div>
     <div class="inp__box">
-      <input type="text" v-model="local.firstNameInp" placeholder="First name" @input="sendData" />
+      <input
+        type="text"
+        v-model="local.firstNameInp"
+        placeholder="First name"
+        @input="sendData"
+      />
     </div>
     <div class="inp__box">
-      <input type="text" v-model="local.lastNameInp" placeholder="Last name" @input="sendData" />
+      <input
+        type="text"
+        v-model="local.lastNameInp"
+        placeholder="Last name"
+        @input="sendData"
+      />
     </div>
   </div>
 </template>
@@ -57,12 +92,21 @@ input {
   width: 100%;
 }
 
+/*
+.inp__box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+*/
+
 .error__box {
   height: 0px;
 }
 
 .error__active {
-  height: 41px !important;
+  height: 21px !important;
+  margin-top: 1rem;
 }
 
 .error__text {

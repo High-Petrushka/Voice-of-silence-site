@@ -26,8 +26,10 @@ const local = reactive({
   error: {
     authError: { text: "", isOccurred: false },
     regError: {
-      emailError: "",
-      passError: "",
+      emailError: { text: "", isOccurred: false },
+      passError: { text: "", isOccurred: false },
+      nameError: { text: "", isOccurred: false },
+      surnameError: { text: "", isOccurred: false },
     },
   },
 });
@@ -39,11 +41,25 @@ function clearAuth() {
   local.error.authError.isOccurred = false;
 }
 
+function clearReg() {
+  local.error.regError.emailError.text = "";
+  local.error.regError.emailError.isOccurred = false;
+}
+
 function reciveAuth(eData, pData) {
   local.authData.email = eData;
   local.authData.pass = pData;
 
   clearAuth();
+}
+
+function reciveReg(eData, pData, nData, sData) {
+  local.regData.email = eData;
+  local.regData.pass = pData;
+  local.regData.firstName = nData;
+  local.regData.lastName = sData;
+
+  clearReg();
 }
 
 function authFunc() {
@@ -63,11 +79,59 @@ function authFunc() {
   }
 }
 
+function compareEmail() {
+  const check = useUsers().checkEmail(local.regData.email);
+  console.log(check);
+
+  switch (check) {
+    case "OK":
+      console.log("Email OK");
+      break;
+    case "EmptyError":
+      local.error.regError.emailError.text = "Required to be filled!";
+      local.error.regError.emailError.isOccurred = true;
+      break;
+    case "PatternError":
+      local.error.regError.emailError.text = "Incorrect email pattern!";
+      local.error.regError.emailError.isOccurred = true;
+      break;
+  }
+}
+
+function comparePass() {
+  const check = useUsers().checkPass(local.regData.pass);
+
+  switch (check) {
+    case "OK":
+      console.log("Password OK");
+      break;
+    case "EmptyError":
+      local.error.regError.passError.text = "Required to be filled!";
+      local.error.regError.passError.isOccurred = true;
+      break;
+  }
+}
+
+function compareName() {
+  const check = useUsers().checkPass(local.regData.firstName);
+}
+
+function compareSurname() {
+  const check = useUsers().checkPass(local.regData.lastName);
+}
+
+function regFunc() {
+  compareEmail();
+  comparePass();
+  compareName();
+  compareSurname();
+}
+
 function btnAction(act) {
   if (act == "compare") {
     authFunc();
   } else {
-    pass;
+    regFunc();
   }
 }
 
@@ -84,7 +148,9 @@ function routeReg() {
       </div>
       <div class="form__input">
         <AuthInp @dataInput="reciveAuth" :errorKey="local.error.authError" v-if="props.formAction == 'compare'" />
-        <RegInp v-if="props.formAction == 'check'" />
+        <RegInp @regInput="reciveReg" :emailError="local.error.regError.emailError"
+          :passError="local.error.regError.passError" :nameError="local.error.regError.nameError"
+          :surnameError="local.error.regError.surnameError" v-if="props.formAction == 'check'" />
       </div>
       <div class="form__buttpn">
         <button class="form__btn" @click.prevent="btnAction(props.formAction)">

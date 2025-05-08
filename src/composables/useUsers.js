@@ -33,6 +33,16 @@ try {
   userList.value = [];
 }
 
+try {
+  if (localStorage.getItem("curUser") === null) {
+    activeUser.value = null;
+  } else {
+    activeUser.value = JSON.parse(localStorage.getItem("curUser"));
+  }
+} catch (error) {
+  activeUser.value = null;
+}
+
 // Traking changes in userList and syncronise them with localStorage
 watch(userList, (newValue) => {
   localStorage.setItem("users", JSON.stringify(newValue));
@@ -120,7 +130,7 @@ function addUser(usrEmail, usrPass, firstName, lastName) {
 }
 
 function findUserIndex(userId) {
-  for (let i = 0; i < userList.value; i++) {
+  for (let i = 0; i < userList.value.length; i++) {
     if (userList.value[i].id == userId) {
       return i;
     }
@@ -141,9 +151,10 @@ function getUser(userId) {
   const index = findUserIndex(userId);
 
   if (index !== null) {
-    return JSON.parse(localStorage.users)
+    //return JSON.parse(localStorage.users);
+    return userList.value[index];
   } else {
-    return "No such user!"
+    return "No such user!";
   }
 }
 

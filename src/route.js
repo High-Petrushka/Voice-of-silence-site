@@ -9,6 +9,10 @@ import AuthPage from "./components/pages/user/AuthPage.vue";
 import RegPage from "./components/pages/user/RegPage.vue";
 import UserPage from "./components/pages/user/UserPage.vue";
 
+import UserInfo from "./components/action/user/UserInfo.vue";
+import UserOrder from "./components/action/user/UserOrder.vue";
+import UserPurchase from "./components/action/user/UserPurchase.vue";
+
 const routes = [
   { path: '/', component: MainPage, name: 'Main' },
   { path: '/headphones', component: HeadphonesPage, name: 'Headphones' },
@@ -17,7 +21,13 @@ const routes = [
   { path: '/vinyl', component: VinylPage, name: 'Vinyl' },
   { path: '/authentification', component: AuthPage, name: 'Authentification' },
   { path: '/registration', component: RegPage, name: 'Registration' },
-  { path: '/user/:name', component: UserPage, name: 'User' },
+  {
+    path: '/user/:name', component: UserPage, name: 'User', children: [
+      { path: 'profile', component: UserInfo, name: 'Info' },
+      { path: 'order', component: UserOrder, name: 'Order' },
+      { path: 'purchase', component: UserPurchase, name: 'Purchase' },
+    ],
+  },
 ];
 
 

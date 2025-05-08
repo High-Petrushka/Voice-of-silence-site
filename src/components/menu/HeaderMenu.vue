@@ -27,8 +27,10 @@ function userClick() {
     router.push({ path: "/authentification" });
   } else {
     const userId = useUsers().getActUser();
+    console.log(userId);
     const actUser = useUsers().getUser(userId);
-    router.push({ path: `/user/${actUser.firstName}` });
+    console.log(actUser);
+    router.push({ path: `/user/${actUser.firstName}/profile` });
   }
 }
 </script>

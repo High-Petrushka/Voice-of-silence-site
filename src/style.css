@@ -62,6 +62,16 @@
   color: var(--font-color);
 }
 
+.user__cont {
+  width: 100%;
+  height: fit-content;
+
+  background: var(--card-color);
+  border-radius: 2rem;
+
+  padding: clamp(2.8rem, 1.182rem + 4.314vw, 5.6rem);
+}
+
 .cont {
   width: min(1280px, 100%);
   height: fit-content;

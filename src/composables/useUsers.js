@@ -24,7 +24,7 @@ const namePattern = /^[A-Za-z]+$/;
 
 // Trying to get an existing list of users, else creating a new DB instance
 try {
-  if (localStorage.getItem("user") === null) {
+  if (localStorage.getItem("users") === null) {
     userList.value = [];
   } else {
     userList.value = JSON.parse(localStorage.getItem("users"));
@@ -39,20 +39,25 @@ watch(userList, (newValue) => {
 },
   { deep: true });
 
+watch(activeUser, (userToSet) => {
+  localStorage.setItem("curUser", JSON.stringify(userToSet));
+},
+  { deep: true });
+
 // Compares the data entered by the user with the info from userList
 function compareUser(email, pass) {
 
   for (let i = 0; i < userList.value.length; i++) {
     if (userList.value[i].email == email) {
       if (userList.value[i].pass == pass) {
-        return "OK";
+        return { state: "OK", userId: userList.value[i].id };
       } else {
-        return "LoginError";
+        return { state: "LoginError", userId: null };
       }
     }
   }
 
-  return "LoginError";
+  return { state: "LoginError", userId: null };
 }
 
 function checkEmail(email) {
@@ -114,6 +119,34 @@ function addUser(usrEmail, usrPass, firstName, lastName) {
   });
 }
 
+function findUserIndex(userId) {
+  for (let i = 0; i < userList.value; i++) {
+    if (userList.value[i].id == userId) {
+      return i;
+    }
+  }
+
+  return null;
+}
+
+function setUser(userId) {
+  activeUser.value = userId;
+}
+
+function getActUser() {
+  return activeUser.value;
+}
+
+function getUser(userId) {
+  const index = findUserIndex(userId);
+
+  if (index !== null) {
+    return JSON.parse(localStorage.users)
+  } else {
+    return "No such user!"
+  }
+}
+
 export default function useUsers() {
-  return { userList, compareUser, addUser, checkEmail, checkPass, checkName };
+  return { userList, compareUser, addUser, checkEmail, checkPass, checkName, setUser, getUser, getActUser };
 }

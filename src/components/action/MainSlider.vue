@@ -18,7 +18,6 @@ function changeImage() {
   }
 
   local.sliderOrder[local.curImg] = 1;
-  console.log(local.curImg);
 }
 
 let intervalId;
@@ -36,32 +35,18 @@ onUnmounted(() => clearInterval(intervalId));
   <div class="cont">
     <div class="slider__cont">
       <figure class="slider__el on__top">
-        <img
-          src="../../assets/main-slider/headphones-slider-2.jpg"
-          alt="${0}"
-          :style="{ opacity: local.sliderOrder[0] }"
-        />
+        <img src="../../assets/main-slider/headphones-slider-2.jpg" alt="${0}"
+          :style="{ opacity: local.sliderOrder[0] }" />
       </figure>
       <figure class="slider__el on__top">
-        <img
-          src="../../assets/main-slider/home-speaker-slider.jpg"
-          alt="${0}"
-          :style="{ opacity: local.sliderOrder[1] }"
-        />
+        <img src="../../assets/main-slider/home-speaker-slider.jpg" alt="${0}"
+          :style="{ opacity: local.sliderOrder[1] }" />
       </figure>
       <figure class="slider__el on__top">
-        <img
-          src="../../assets/main-slider/speakers-slider.jpg"
-          alt="${0}"
-          :style="{ opacity: local.sliderOrder[2] }"
-        />
+        <img src="../../assets/main-slider/speakers-slider.jpg" alt="${0}" :style="{ opacity: local.sliderOrder[2] }" />
       </figure>
       <figure class="slider__el">
-        <img
-          src="../../assets/main-slider/vinyl-slider.jpg"
-          alt="${0}"
-          :style="{ opacity: local.sliderOrder[3] }"
-        />
+        <img src="../../assets/main-slider/vinyl-slider.jpg" alt="${0}" :style="{ opacity: local.sliderOrder[3] }" />
       </figure>
     </div>
   </div>
@@ -75,13 +60,11 @@ img {
   aspect-ratio: 24 / 9;
   object-fit: cover;
 
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #222 15%,
-    #222 85%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(90deg,
+      transparent,
+      #222 15%,
+      #222 85%,
+      transparent 100%);
 
   transition: 1s ease-in;
 }

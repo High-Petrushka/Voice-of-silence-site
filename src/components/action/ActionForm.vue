@@ -77,9 +77,10 @@ function authFunc() {
     local.authData.pass,
   );
 
-  switch (check) {
+  switch (check.state) {
     case "OK":
-      console.log("OK");
+      useUsers().setUser(check.userId);
+      makeRoute("");
       break;
     case "LoginError":
       local.error.authError.text = "Incorrect email or password!";
@@ -90,11 +91,11 @@ function authFunc() {
 
 function compareEmail() {
   const check = useUsers().checkEmail(local.regData.email);
-  console.log(check);
+  let answer = 0;
 
   switch (check) {
     case "OK":
-      console.log("Email OK");
+      answer = 1;
       break;
     case "EmptyError":
       local.error.regError.emailError.text = "Required to be filled!";
@@ -105,14 +106,17 @@ function compareEmail() {
       local.error.regError.emailError.isOccurred = true;
       break;
   }
+
+  return answer;
 }
 
 function comparePass() {
   const check = useUsers().checkPass(local.regData.pass);
+  let answer = 0;
 
   switch (check) {
     case "OK":
-      console.log("Password OK");
+      answer = 1;
       break;
     case "EmptyError":
       local.error.regError.passError.text = "Required to be filled!";
@@ -127,14 +131,17 @@ function comparePass() {
       local.error.regError.passError.isOccurred = true;
       break;
   }
+
+  return answer;
 }
 
 function compareName(str, err) {
   const check = useUsers().checkName(local.regData[`${str}`]);
+  let answer = 0;
 
   switch (check) {
     case "OK":
-      console.log("Text OK");
+      answer = 1;
       break;
     case "EmptyError":
       local.error.regError[`${err}`].text = "Required to be filled!";
@@ -145,13 +152,25 @@ function compareName(str, err) {
       local.error.regError[`${err}`].isOccurred = true;
       break;
   }
+
+  return answer;
 }
 
 function regFunc() {
-  compareEmail();
-  comparePass();
-  compareName("firstName", "nameError");
-  compareName("lastName", "surnameError");
+  let x1 = compareEmail();
+  let x2 = comparePass();
+  let x3 = compareName("firstName", "nameError");
+  let x4 = compareName("lastName", "surnameError");
+
+  if (x1 + x2 + x3 + x4 == 4) {
+    const email = local.regData.email;
+    const pass = local.regData.pass;
+    const firstName = local.regData.firstName;
+    const lastName = local.regData.lastName;
+
+    useUsers().addUser(email, pass, firstName, lastName);
+    makeRoute("authentification");
+  }
 }
 
 function btnAction(act) {
@@ -164,6 +183,10 @@ function btnAction(act) {
 
 function routeReg() {
   router.push({ path: "/registration" });
+}
+
+function makeRoute(target) {
+  router.push({ path: `/${target}` });
 }
 </script>
 

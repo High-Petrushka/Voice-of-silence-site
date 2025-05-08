@@ -4,6 +4,7 @@ import MobileMenu from "./MobileMenu.vue";
 import { useRouter } from "vue-router";
 
 import { reactive } from "vue";
+import useUsers from "../../composables/useUsers";
 
 const local = reactive({
   menuPosition: "300",
@@ -22,7 +23,13 @@ function closeMenu() {
 }
 
 function userClick() {
-  router.push({ path: '/authentification' });
+  if (localStorage.curUser == undefined || localStorage.curUser === null) {
+    router.push({ path: "/authentification" });
+  } else {
+    const userId = useUsers().getActUser();
+    const actUser = useUsers().getUser(userId);
+    router.push({ path: `/user/${actUser.firstName}` });
+  }
 }
 </script>
 
@@ -55,10 +62,7 @@ function userClick() {
           />
         </div>
         <div class="menu__item">
-          <img
-            src="../../assets/icons/online-shopping.png"
-            alt="Cart icon"
-          />
+          <img src="../../assets/icons/online-shopping.png" alt="Cart icon" />
         </div>
         <div class="menu__item" id="hamburger">
           <img

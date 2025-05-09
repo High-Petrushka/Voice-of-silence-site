@@ -23,7 +23,7 @@ function closeMenu() {
 }
 
 function userClick() {
-  if (localStorage.curUser == undefined || localStorage.curUser === null) {
+  if (useUsers().getActUser() === null) {
     router.push({ path: "/authentification" });
   } else {
     const userId = useUsers().getActUser();

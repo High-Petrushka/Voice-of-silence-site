@@ -2,6 +2,7 @@
 import { onMounted, onUpdated, reactive } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import { useRouter } from "vue-router";
+import useUsers from "../../../composables/useUsers";
 
 const router = useRouter();
 
@@ -33,7 +34,13 @@ onUpdated(() => {
 });
 
 onMounted(() => {
-  router.push({ name: "Info" });
+  const userCheck = useUsers().getActUser();
+
+  if (userCheck === null) {
+    router.push({ name: "Authentification", replace: true });
+  } else {
+    router.push({ name: "Info", replace: true });
+  }
 });
 </script>
 
@@ -43,19 +50,19 @@ onMounted(() => {
       <RouterLink
         class="user__link"
         :class="{ active__link: local.actPage.profile }"
-        :to="{ name: 'Info' }"
+        :to="{ name: 'Info', replace: true }"
         >Profile
       </RouterLink>
       <RouterLink
         class="user__link"
         :class="{ active__link: local.actPage.order }"
-        :to="{ name: 'Order' }"
+        :to="{ name: 'Order', replace: true }"
         >Order
       </RouterLink>
       <RouterLink
         class="user__link"
         :class="{ active__link: local.actPage.purchase }"
-        :to="{ name: 'Purchase' }"
+        :to="{ name: 'Purchase', replace: true }"
       >
         Purchase
       </RouterLink>

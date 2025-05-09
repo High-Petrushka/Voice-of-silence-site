@@ -186,7 +186,7 @@ function routeReg() {
 }
 
 function makeRoute(target) {
-  router.push({ path: `/${target}` });
+  router.push({ path: `/${target}`, replace: true });
 }
 </script>
 
@@ -197,16 +197,29 @@ function makeRoute(target) {
         <h2 class="form__title">{{ props.formTitle }}</h2>
       </div>
       <div class="form__input">
-        <AuthInp @dataInput="reciveAuth" :errorKey="local.error.authError" v-if="props.formAction == 'compare'" />
-        <RegInp @regInput="reciveReg" :emailError="local.error.regError.emailError"
-          :passError="local.error.regError.passError" :nameError="local.error.regError.nameError"
-          :surnameError="local.error.regError.surnameError" v-if="props.formAction == 'check'" />
+        <AuthInp
+          @dataInput="reciveAuth"
+          :errorKey="local.error.authError"
+          v-if="props.formAction == 'compare'"
+        />
+        <RegInp
+          @regInput="reciveReg"
+          :emailError="local.error.regError.emailError"
+          :passError="local.error.regError.passError"
+          :nameError="local.error.regError.nameError"
+          :surnameError="local.error.regError.surnameError"
+          v-if="props.formAction == 'check'"
+        />
       </div>
       <div class="form__buttpn">
         <button class="form__btn" @click.prevent="btnAction(props.formAction)">
           {{ props.buttonText }}
         </button>
-        <p class="form__link" @click="routeReg" v-if="props.formAction == 'compare'">
+        <p
+          class="form__link"
+          @click="routeReg"
+          v-if="props.formAction == 'compare'"
+        >
           Create account
         </p>
       </div>

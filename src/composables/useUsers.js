@@ -13,8 +13,8 @@ const userEntiy = {
   pass: Str,
   firstName: Str,
   lastName: Str,
-  cart: Obj,
-  order: Obj,
+  cart: Arr,
+  order: Arr,
 }
 */
 
@@ -125,7 +125,8 @@ function addUser(usrEmail, usrPass, firstName, lastName) {
     pass: usrPass,
     firstName: firstName,
     lastName: lastName,
-
+    cart: [],
+    order: [],
   });
 }
 
@@ -158,6 +159,10 @@ function getUser(userId) {
   }
 }
 
+function quit() {
+  activeUser.value = null;
+}
+
 export default function useUsers() {
-  return { userList, compareUser, addUser, checkEmail, checkPass, checkName, setUser, getUser, getActUser };
+  return { userList, compareUser, addUser, checkEmail, checkPass, checkName, setUser, getUser, getActUser, quit };
 }

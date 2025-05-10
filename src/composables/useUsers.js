@@ -161,10 +161,17 @@ function getUser(userId) {
   }
 }
 
+function addToCart(type, id) {
+  const index = findUserIndex(activeUser.value);
+  userList.value[index].cart.push({ itemType: type, itemId: id });
+}
+
+function delFromCart() { }
+
 function quit() {
   activeUser.value = null;
 }
 
 export default function useUsers() {
-  return { userList, compareUser, addUser, checkEmail, checkPass, checkName, setUser, getUser, getActUser, quit };
+  return { userList, compareUser, addUser, checkEmail, checkPass, checkName, setUser, getUser, getActUser, addToCart, quit };
 }

@@ -9,6 +9,7 @@ import AuthPage from "./components/pages/user/AuthPage.vue";
 import RegPage from "./components/pages/user/RegPage.vue";
 import UserPage from "./components/pages/user/UserPage.vue";
 import ItemPage from "./components/pages/item/ItemPage.vue";
+import CartPage from "./components/pages/user/CartPage.vue";
 
 import UserInfo from "./components/action/user/UserInfo.vue";
 import UserOrder from "./components/action/user/UserOrder.vue";
@@ -23,6 +24,7 @@ const routes = [
   { path: '/authentification', component: AuthPage, name: 'Authentification' },
   { path: '/registration', component: RegPage, name: 'Registration' },
   { path: '/shop/:type/:id', component: ItemPage, name: 'Item' },
+  { path: '/cart/:name', component: CartPage, name: "Cart" },
   {
     path: '/user/:name', component: UserPage, name: 'User', children: [
       { path: 'profile', component: UserInfo, name: 'Info' },

@@ -1,5 +1,7 @@
 <script setup>
-import { reactive, ref } from "vue";
+import { ref } from "vue";
+import useUsers from "../../../composables/useUsers";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
   itemName: "",
@@ -7,14 +9,25 @@ const props = defineProps({
   itemType: "",
   itemImg: "",
   itemId: "",
-  itemDesc: [],
+  itemDesc: Array,
 });
 
 const listStyles = ref(false);
 
+const router = useRouter();
+
 function changeListSate() {
   listStyles.value = !listStyles.value;
-  console.log(listStyles.value);
+}
+
+function cartAction() {
+  const actUser = useUsers().getActUser();
+
+  if (actUser === null) {
+    router.push({ path: "/authentification" });
+  } else {
+    useUsers().addToCart(props.itemType, props.itemId);
+  }
 }
 </script>
 
@@ -39,17 +52,17 @@ function changeListSate() {
         <div class="pros__cont">
           <div class="pros__title__box" @click="changeListSate">
             <p class="pros__title">Info</p>
-            <div class="pros__cross"></div>
+            <div class="pros__cross" :class="{ active__cross: listStyles }"></div>
           </div>
-          <ul class="pros__list">
-            <li class="pros__text" v-for="item in props.itemDesc">
+          <ul class="pros__list" :class="{ active__list: listStyles }">
+            <li class="pros__text" :class="{ active__text: listStyles }" v-for="item in props.itemDesc">
               {{ item }}
             </li>
           </ul>
         </div>
       </div>
       <div class="button__cont">
-        <button class="item__btn">Add to cart</button>
+        <button class="item__btn" @click="cartAction">Add to cart</button>
       </div>
     </div>
   </div>
@@ -104,6 +117,8 @@ function changeListSate() {
 }
 
 .pros__title__box {
+  margin-bottom: 0.5rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -123,6 +138,8 @@ function changeListSate() {
   display: block;
 
   position: relative;
+
+  transition: transform 0.5s ease-out;
 }
 
 .pros__cross::before {
@@ -151,17 +168,34 @@ function changeListSate() {
   transform: translateX(-50%);
 }
 
+.active__cross {
+  transform: rotate(45deg);
+}
+
 .pros__list {
   height: 0;
 
   list-style: none;
   overflow: hidden;
+
+  transition: height 0.8s ease-out;
+}
+
+.active__list {
+  height: 600px;
 }
 
 .pros__text {
   font-size: 1.6rem;
   font-weight: 400;
   color: var(--font-color);
+
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.active__text {
+  opacity: 1;
 }
 
 .button__cont {
@@ -194,6 +228,10 @@ function changeListSate() {
 
   .pros__list {
     height: auto;
+  }
+
+  .pros__text {
+    opacity: 1;
   }
 
   .button__cont {

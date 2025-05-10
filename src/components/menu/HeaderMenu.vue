@@ -31,6 +31,16 @@ function userClick() {
     router.push({ path: `/user/${actUser.firstName}/profile` });
   }
 }
+
+function cartClick() {
+  if (useUsers().getActUser() === null) {
+    router.push({ path: "/authentification" });
+  } else {
+    const userId = useUsers().getActUser();
+    const actUser = useUsers().getUser(userId);
+    router.push({ path: `/cart/${actUser.firstName}` });
+  }
+}
 </script>
 
 <template>
@@ -55,21 +65,13 @@ function userClick() {
       </div>
       <div class="menu__el">
         <div class="menu__item">
-          <img
-            src="../../assets/icons/user.png"
-            alt="User icon"
-            @click="userClick"
-          />
+          <img src="../../assets/icons/user.png" alt="User icon" @click="userClick" />
         </div>
         <div class="menu__item">
-          <img src="../../assets/icons/online-shopping.png" alt="Cart icon" />
+          <img src="../../assets/icons/online-shopping.png" alt="Cart icon" @click="cartClick" />
         </div>
         <div class="menu__item" id="hamburger">
-          <img
-            src="../../assets/icons/hamburger.png"
-            alt="hamburger menu icon"
-            @click="openMenu"
-          />
+          <img src="../../assets/icons/hamburger.png" alt="hamburger menu icon" @click="openMenu" />
         </div>
       </div>
     </div>

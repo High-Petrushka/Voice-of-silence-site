@@ -6,17 +6,17 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-    <header>
-        <HeaderMenu @change-page="pageChanger" />
-    </header>
+  <header>
+    <HeaderMenu />
+  </header>
 
-    <main class="main__cont">
-        <RouterView />
-    </main>
+  <main class="main__cont">
+    <RouterView />
+  </main>
 
-    <footer>
-        <FooterMenu />
-    </footer>
+  <footer>
+    <FooterMenu />
+  </footer>
 </template>
 
 <style scoped></style>

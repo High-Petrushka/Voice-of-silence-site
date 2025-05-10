@@ -12,7 +12,13 @@ const itemList = useGoods().headphonesList.value;
   <div class="cont">
     <div class="item__list">
       <div class="card__cont" v-for="item in itemList">
-        <ItemCard :itemName="item.name" :itemPrice="item.price" :itemType="item.type" :itemImg="item.image" />
+        <ItemCard
+          :itemName="item.name"
+          :itemPrice="item.price"
+          :itemType="item.type"
+          :itemImg="item.image"
+          :itemId="item.id"
+        />
       </div>
     </div>
   </div>

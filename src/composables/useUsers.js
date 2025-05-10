@@ -15,6 +15,7 @@ const userEntiy = {
   lastName: Str,
   cart: Arr,
   order: Arr,
+  goods: Arr,
 }
 */
 
@@ -127,6 +128,7 @@ function addUser(usrEmail, usrPass, firstName, lastName) {
     lastName: lastName,
     cart: [],
     order: [],
+    goods: [],
   });
 }
 

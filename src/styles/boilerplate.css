@@ -82,7 +82,7 @@ input {
 @media screen and (width > 1024px) {
   button {
     padding: 1.5rem 3.5rem;
-    border: 2px solid currentColor;
+    border: 1px solid currentColor;
 
     font-size: 1.8rem;
     font-weight: 500;

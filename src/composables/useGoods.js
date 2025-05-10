@@ -63,6 +63,39 @@ const vinylList = ref([
   },
 ]);
 
+function findItemIndex(list, id) {
+  for (let i = 0; i < list.value.length; i++) {
+    if (list.value[i].id == id) {
+      return i;
+    }
+  }
+
+  return null;
+}
+
+function getGood(type, id) {
+  let targetList;
+
+  switch (type) {
+    case "Headphones":
+      targetList = headphonesList;
+      break;
+    case "Speakers":
+      targetList = speakersList;
+      break;
+    case "Accessories":
+      targetList = accessoriesList;
+      break;
+    case "Vinyl":
+      targetList = vinylList;
+      break;
+  }
+
+  const goodIndex = findItemIndex(targetList, id);
+
+  return targetList.value[goodIndex];
+}
+
 export default function useGoods() {
-  return { headphonesList, speakersList, accessoriesList, vinylList };
+  return { headphonesList, speakersList, accessoriesList, vinylList, getGood };
 }

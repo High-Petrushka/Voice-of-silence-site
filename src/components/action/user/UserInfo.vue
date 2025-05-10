@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import useUsers from "../../../composables/useUsers";
 import { useRouter } from "vue-router";
 
@@ -7,14 +7,6 @@ const userIndex = ref(useUsers().getActUser());
 const userInfo = ref(useUsers().getUser(userIndex.value));
 
 const router = useRouter();
-
-console.log(userInfo.value);
-
-console.log("action 1");
-onMounted(() => {
-  console.log("action 2");
-});
-console.log("action 3");
 
 function logOut() {
   useUsers().quit();

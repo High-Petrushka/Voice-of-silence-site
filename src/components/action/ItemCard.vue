@@ -1,17 +1,30 @@
 <script setup>
+import { useRouter } from "vue-router";
+
 const props = defineProps({
   itemName: "",
   itemPrice: "",
   itemType: "",
   itemImg: "",
+  itemId: "",
 });
+
+const router = useRouter();
+
+function routeItem(chapter, id) {
+  router.push({ path: `/shop/${chapter}/${id}` });
+}
 </script>
 
 <template>
   <div class="card__box">
     <div class="image__box">
-      <img class="item__img" :src="props.itemImg" alt="Product image" />
-
+      <img
+        class="item__img"
+        :src="props.itemImg"
+        alt="Product image"
+        @click="routeItem(props.itemType, props.itemId)"
+      />
     </div>
     <div class="title__box">
       <div class="type__box">
@@ -56,6 +69,7 @@ const props = defineProps({
   height: 100%;
 
   object-fit: contain;
+  cursor: pointer;
 }
 
 .item__name {

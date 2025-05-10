@@ -8,6 +8,7 @@ import VinylPage from "./components/pages/VinylPage.vue"
 import AuthPage from "./components/pages/user/AuthPage.vue";
 import RegPage from "./components/pages/user/RegPage.vue";
 import UserPage from "./components/pages/user/UserPage.vue";
+import ItemPage from "./components/pages/item/ItemPage.vue";
 
 import UserInfo from "./components/action/user/UserInfo.vue";
 import UserOrder from "./components/action/user/UserOrder.vue";
@@ -21,6 +22,7 @@ const routes = [
   { path: '/vinyl', component: VinylPage, name: 'Vinyl' },
   { path: '/authentification', component: AuthPage, name: 'Authentification' },
   { path: '/registration', component: RegPage, name: 'Registration' },
+  { path: '/shop/:type/:id', component: ItemPage, name: 'Item' },
   {
     path: '/user/:name', component: UserPage, name: 'User', children: [
       { path: 'profile', component: UserInfo, name: 'Info' },

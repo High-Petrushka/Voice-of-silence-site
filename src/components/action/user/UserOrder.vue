@@ -2,13 +2,13 @@
 import useUsers from "../../../composables/useUsers";
 
 const userIndex = useUsers().getActUser();
-const userCart = useUsers().getUser(userIndex).cart;
+const userOrders = useUsers().getUser(userIndex).order;
 </script>
 
 <template>
   <div class="cont">
     <div class="user__cont">
-      <div class="empty__cont" v-if="userCart.length == 0">
+      <div class="empty__cont" v-if="userOrders.length == 0">
         <p class="empty__text">You have no orders yet :D</p>
       </div>
       <div class="order__cont" v-else>

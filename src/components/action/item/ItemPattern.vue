@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import useUsers from "../../../composables/useUsers";
 import { useRouter } from "vue-router";
 
@@ -10,6 +10,11 @@ const props = defineProps({
   itemImg: "",
   itemId: "",
   itemDesc: Array,
+});
+
+const local = reactive({
+  btnText: "Add to cart",
+  inCart: false,
 });
 
 const listStyles = ref(false);
@@ -26,7 +31,11 @@ function cartAction() {
   if (actUser === null) {
     router.push({ path: "/authentification" });
   } else {
-    useUsers().addToCart(props.itemType, props.itemId);
+    if (!local.inCart) {
+      local.btnText = "In cart!";
+      local.inCart = true;
+      useUsers().addToCart(props.itemType, props.itemId);
+    }
   }
 }
 </script>
@@ -62,7 +71,9 @@ function cartAction() {
         </div>
       </div>
       <div class="button__cont">
-        <button class="item__btn" @click="cartAction">Add to cart</button>
+        <button class="item__btn" @click="cartAction">
+          {{ local.btnText }}
+        </button>
       </div>
     </div>
   </div>

@@ -1,5 +1,7 @@
 <script setup>
 import { useRouter } from "vue-router";
+import useUsers from "../../composables/useUsers";
+import { reactive } from "vue";
 
 const props = defineProps({
   itemName: "",
@@ -9,22 +11,42 @@ const props = defineProps({
   itemId: "",
 });
 
+const local = reactive({
+  btnText: "Buy",
+  inCart: false,
+});
+
 const router = useRouter();
 
 function routeItem(chapter, id) {
   router.push({ path: `/shop/${chapter}/${id}` });
+}
+
+function btnAction() {
+  const actUser = useUsers().getActUser();
+
+  if (actUser === null) {
+    router.push({ path: "/authentification" });
+  } else {
+    if (!local.inCart) {
+      console.log("Add");
+      local.btnText = "Del";
+      local.inCart = true;
+      useUsers().addToCart(props.itemType, props.itemId);
+    } else {
+      console.log("Del");
+      local.btnText = "Buy";
+      local.inCart = false;
+    }
+  }
 }
 </script>
 
 <template>
   <div class="card__box">
     <div class="image__box">
-      <img
-        class="item__img"
-        :src="props.itemImg"
-        alt="Product image"
-        @click="routeItem(props.itemType, props.itemId)"
-      />
+      <img class="item__img" :src="props.itemImg" alt="Product image"
+        @click="routeItem(props.itemType, props.itemId)" />
     </div>
     <div class="title__box">
       <div class="type__box">
@@ -36,7 +58,10 @@ function routeItem(chapter, id) {
     </div>
     <div class="price__box">
       <span class="item__price">$ {{ props.itemPrice }}</span>
-      <button class="item__btn"><span>Buy</span></button>
+      <button class="item__btn" @click="btnAction">
+        <div class="btn__content" :class="{ cross__rotate: local.inCart }"></div>
+        <div class="btn__text">{{ local.btnText }}</div>
+      </button>
     </div>
   </div>
 </template>
@@ -93,6 +118,7 @@ function routeItem(chapter, id) {
   justify-content: space-between;
 }
 
+/* Setting a 'display: none' property for a button to hide it till future rework */
 .item__btn {
   width: 32px;
   height: 32px;
@@ -100,9 +126,26 @@ function routeItem(chapter, id) {
   border-radius: 0.5rem;
 
   position: relative;
+  display: none;
 }
 
-.item__btn::before {
+.btn__contnent {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  position: relative;
+  transform: rotate(0deg);
+
+  transition: transform 0.35s ease;
+}
+
+.btn__rotate {
+  transform: rotate(45deg);
+}
+
+.btn__content::before {
   content: "";
 
   width: 1px;
@@ -117,7 +160,7 @@ function routeItem(chapter, id) {
   transform: translate(-50%, -50%);
 }
 
-.item__btn::after {
+.btn__content::after {
   content: "";
 
   width: 15px;
@@ -130,6 +173,13 @@ function routeItem(chapter, id) {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.btn__text {
+  width: 100%;
+  height: 100%;
+
+  display: none;
 }
 
 .item__btn span {
@@ -156,6 +206,7 @@ function routeItem(chapter, id) {
     font-size: 2rem;
   }
 
+  /*
   .item__btn::before {
     content: "Buy";
 
@@ -163,6 +214,17 @@ function routeItem(chapter, id) {
     height: fit-content;
 
     background-color: transparent;
+  }
+  */
+
+  .btn__content {
+    display: none;
+  }
+
+  .btn__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .item__btn::after {

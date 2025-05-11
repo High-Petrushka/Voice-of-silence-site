@@ -4,15 +4,18 @@ import useUsers from "../../../composables/useUsers";
 import { useRouter } from "vue-router";
 
 const userIndex = useUsers().getActUser();
-const user = ref(useUsers().getUser(userIndex));
+//const user = ref(useUsers().getUser(userIndex));
+const user = useUsers().getUser(userIndex);
 
 const router = useRouter();
 
 onMounted(() => {
   const userCheck = useUsers().getActUser();
 
+  console.log("Done");
+
   if (userCheck === null) {
-    router.push({ name: "Authentification", replace: true });
+    router.push({ path: "/authentification", replace: true });
   }
 });
 </script>
@@ -25,8 +28,18 @@ onMounted(() => {
       </div>
     </div>
     <div class="cart__content" v-else>
-      <div class="user__cont" v-for="item in user.cart">
-        {{ item }}
+      <div class="items__cont">
+        <div class="user__cont" v-for="item in user.cart">
+          {{ item }}
+        </div>
+      </div>
+      <div class="order__cont">
+        <div class="sum__box">
+          <p class="sum__text">Tolal:</p>
+        </div>
+        <div class="button__box">
+          <button class="order__btn">Order</button>
+        </div>
       </div>
     </div>
   </div>
@@ -49,5 +62,48 @@ onMounted(() => {
 
 .empty__text {
   font-size: 1.8rem;
+}
+
+.cart__content {
+  width: 100%;
+  height: fit-content;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  row-gap: 4rem;
+}
+
+.items__cont {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+}
+
+.order__cont {
+  padding: 1rem 0rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order__btn {
+  padding: 1.5rem 3.5rem;
+  width: clamp(11.4rem, -1.37rem + 34.052vw, 33.5rem);
+}
+
+.sum__text {
+  font-size: clamp(1.8rem, 1.627rem + 0.462vw, 2.1rem);
+}
+
+@media screen and (width > 1024px) {
+  .order__btn {
+    width: 335px;
+  }
+
+  .sum__text {
+    font-size: 2.1rem;
+  }
 }
 </style>

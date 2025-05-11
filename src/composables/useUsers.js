@@ -142,6 +142,18 @@ function findUserIndex(userId) {
   return null;
 }
 
+function findItemIndex(targetId) {
+  const userIndex = findUserIndex(activeUser.value);
+
+  for (let i = 0; i < userList.value[userIndex].cart.length; i++) {
+    if (userList.value[userIndex].cart[i].cartId == targetId) {
+      return i;
+    }
+  }
+
+  return null;
+}
+
 function setUser(userId) {
   activeUser.value = userId;
 }
@@ -162,16 +174,35 @@ function getUser(userId) {
 }
 
 function addToCart(type, id) {
-  const index = findUserIndex(activeUser.value);
-  userList.value[index].cart.push({ itemType: type, itemId: id });
+  const userIndex = findUserIndex(activeUser.value);
+  let itemCartId;
+
+  const cartLen = userList.value[userIndex].cart.length;
+
+  if (cartLen == 0) {
+    itemCartId = 0;
+  } else {
+    itemCartId = userList.value[userIndex].cart[cartLen - 1].cartId + 1;
+  }
+
+  userList.value[userIndex].cart.push({ itemType: type, itemId: id, cartId: itemCartId });
 }
 
-function delFromCart() { }
+function delFromCart(cartId) {
+  const userIndex = findUserIndex(activeUser.value);
+  const itemIndex = findItemIndex(cartId);
+
+  if (itemIndex !== null) {
+    userList.value[userIndex].cart.splice(itemIndex, 1);
+  } else {
+    console.log("Item not found")
+  }
+}
 
 function quit() {
   activeUser.value = null;
 }
 
 export default function useUsers() {
-  return { userList, compareUser, addUser, checkEmail, checkPass, checkName, setUser, getUser, getActUser, addToCart, quit };
+  return { userList, compareUser, addUser, checkEmail, checkPass, checkName, setUser, getUser, getActUser, addToCart, delFromCart, quit };
 }

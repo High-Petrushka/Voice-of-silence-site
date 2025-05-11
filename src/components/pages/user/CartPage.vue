@@ -1,7 +1,12 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import useUsers from "../../../composables/useUsers";
 import { useRouter } from "vue-router";
+import CartItem from "../../action/item/CartItem.vue";
+
+const local = reactive({
+  totalPrice: 0,
+});
 
 const userIndex = useUsers().getActUser();
 //const user = ref(useUsers().getUser(userIndex));
@@ -18,6 +23,14 @@ onMounted(() => {
     router.push({ path: "/authentification", replace: true });
   }
 });
+
+function increase(sum) {
+  local.totalPrice += Number(sum);
+}
+
+function decrease(sum) {
+  local.totalPrice -= Number(sum);
+}
 </script>
 
 <template>
@@ -29,13 +42,20 @@ onMounted(() => {
     </div>
     <div class="cart__content" v-else>
       <div class="items__cont">
-        <div class="user__cont" v-for="item in user.cart">
-          {{ item }}
+        <div class="item__wrapper" v-for="item in user.cart">
+          <CartItem
+            :itemType="item.itemType"
+            :itemId="item.itemId"
+            :itemCartId="item.cartId"
+            @priceUp="increase"
+            @priceDown="decrease"
+          />
         </div>
       </div>
       <div class="order__cont">
         <div class="sum__box">
           <p class="sum__text">Tolal:</p>
+          <span class="sum__number">${{ local.totalPrice }}</span>
         </div>
         <div class="button__box">
           <button class="order__btn">Order</button>
@@ -77,7 +97,18 @@ onMounted(() => {
 .items__cont {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 2rem;
+}
+
+.item__wrapper {
+  width: 100%;
+  height: fit-content;
+
+  padding: 2rem 0rem;
+  border-top: 1px solid var(--cart-border-color);
+}
+
+.item__wrapper:last-child {
+  border-bottom: 1px solid var(--cart-border-color);
 }
 
 .order__cont {
@@ -91,10 +122,28 @@ onMounted(() => {
 .order__btn {
   padding: 1.5rem 3.5rem;
   width: clamp(11.4rem, -1.37rem + 34.052vw, 33.5rem);
+
+  transition:
+    width 0.35s,
+    background 0.35s,
+    border 0.35s,
+    color 0.35s;
+}
+
+.sum__box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .sum__text {
   font-size: clamp(1.8rem, 1.627rem + 0.462vw, 2.1rem);
+  font-weight: 500;
+}
+
+.sum__number {
+  font-size: clamp(1.8rem, 1.627rem + 0.462vw, 2.1rem);
+  font-weight: 500;
 }
 
 @media screen and (width > 1024px) {
@@ -103,6 +152,10 @@ onMounted(() => {
   }
 
   .sum__text {
+    font-size: 2.1rem;
+  }
+
+  .sum__number {
     font-size: 2.1rem;
   }
 }

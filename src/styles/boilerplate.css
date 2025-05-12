@@ -79,6 +79,21 @@ input {
     margin-top 0.5s ease;
 }
 
+select {
+  padding: 1rem 2rem;
+  background: transparent;
+
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid var(--element-color);
+
+  font-size: 1.6rem;
+  font-weight: 400;
+
+  transition: border-bottom 0.5s ease;
+}
+
 @media screen and (width > 1024px) {
   button {
     padding: 1.5rem 3.5rem;

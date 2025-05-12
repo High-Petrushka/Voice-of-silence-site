@@ -35,5 +35,15 @@ onMounted(() => {
 <style scoped>
 .cont {
   padding-top: 8rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+@media screen and (width > 1024px) {
+  .cont {
+    gap: 6rem;
+  }
 }
 </style>

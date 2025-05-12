@@ -17,8 +17,6 @@ const router = useRouter();
 onMounted(() => {
   const userCheck = useUsers().getActUser();
 
-  console.log("Done");
-
   if (userCheck === null) {
     router.push({ path: "/authentification", replace: true });
   }
@@ -30,6 +28,10 @@ function increase(sum) {
 
 function decrease(sum) {
   local.totalPrice -= Number(sum);
+}
+
+function btnAction() {
+  router.push({ path: `/order/${user.firstName}` });
 }
 </script>
 
@@ -43,13 +45,8 @@ function decrease(sum) {
     <div class="cart__content" v-else>
       <div class="items__cont">
         <div class="item__wrapper" v-for="item in user.cart">
-          <CartItem
-            :itemType="item.itemType"
-            :itemId="item.itemId"
-            :itemCartId="item.cartId"
-            @priceUp="increase"
-            @priceDown="decrease"
-          />
+          <CartItem :itemType="item.itemType" :itemId="item.itemId" :itemCartId="item.cartId" @priceUp="increase"
+            @priceDown="decrease" />
         </div>
       </div>
       <div class="order__cont">
@@ -58,7 +55,7 @@ function decrease(sum) {
           <span class="sum__number">${{ local.totalPrice }}</span>
         </div>
         <div class="button__box">
-          <button class="order__btn">Order</button>
+          <button class="order__btn" @click="btnAction">Order</button>
         </div>
       </div>
     </div>

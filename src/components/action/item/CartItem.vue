@@ -23,7 +23,6 @@ onUnmounted(() => {
 
 function btnAction() {
   useUsers().delFromCart(props.itemCartId);
-  console.log(props.itemCartId);
 }
 </script>
 

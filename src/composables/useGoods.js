@@ -20,7 +20,7 @@ const headphonesList = ref([
   {
     name: "Marshall Major IV",
     id: 1,
-    price: "99.99",
+    price: "99.00",
     descript: [
       "Major IV delivers the signature Marshall sound that you’ve come to expect. Custom-tuned dynamic drivers deliver roaring bass, smooth mids and brilliant treble for a rich, unrivalled sound that you’ll never want to turn off.. Driver Impedance : 32 Ω. Frequency Range : 20-20,000 Hz.",
       "80+ solid hours of wireless playtime with quick-charge capability – only 15 minutes of charging will give you 15 hours of listening. These are headphones truly built for the long haul.",

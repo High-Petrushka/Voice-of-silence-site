@@ -35,6 +35,11 @@ function cartAction() {
       local.btnText = "In cart!";
       local.inCart = true;
       useUsers().addToCart(props.itemType, props.itemId);
+
+      setTimeout(() => {
+        local.btnText = "Add to cart";
+        local.inCart = false;
+      }, 1500);
     }
   }
 }

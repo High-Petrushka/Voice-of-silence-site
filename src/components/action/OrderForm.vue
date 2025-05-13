@@ -1,6 +1,15 @@
 <script setup>
 import { reactive } from "vue";
 
+const props = defineProps({
+  nameError: Object,
+  surnameError: Object,
+  mobileError: Object,
+  addressError: Object,
+  cityError: Object,
+  paymentError: Object,
+});
+
 const emit = defineEmits(["dataInp"]);
 
 const local = reactive({
@@ -39,41 +48,97 @@ function handleSelect(type) {
           <input
             type="text"
             placeholder="First name"
+            :class="{ error__inp: props.nameError.isOccured }"
             v-model="local.inp.nameInp"
             @input="handleInp('nameInp')"
           />
+          <div
+            class="error__box"
+            :class="{ error__active: props.nameError.isOccured }"
+          >
+            <p
+              class="error__text"
+              :class="{ active__text: props.nameError.isOccured }"
+            >
+              {{ props.nameError.text }}
+            </p>
+          </div>
         </div>
         <div class="input__box">
           <input
             type="text"
             placeholder="Last name"
+            :class="{ error__inp: props.surnameError.isOccured }"
             v-model="local.inp.surnameInp"
             @input="handleInp('surnameInp')"
           />
+          <div
+            class="error__box"
+            :class="{ error__active: props.surnameError.isOccured }"
+          >
+            <p
+              class="error__text"
+              :class="{ active__text: props.surnameError.isOccured }"
+            >
+              {{ props.surnameError.text }}
+            </p>
+          </div>
         </div>
         <div class="input__box">
           <input
             type="tel"
             placeholder="Mobile phone"
+            :class="{ error__inp: props.mobileError.isOccured }"
             v-model="local.inp.mobileInp"
             @input="handleInp('mobileInp')"
           />
+          <div
+            class="error__box"
+            :class="{ error__active: props.mobileError.isOccured }"
+          >
+            <p
+              class="error__text"
+              :class="{ active__text: props.mobileError.isOccured }"
+            >
+              {{ props.mobileError.text }}
+            </p>
+          </div>
         </div>
         <div class="input__box">
           <input
             type="text"
             placeholder="Address"
+            :class="{ error__inp: props.addressError.isOccured }"
             v-model="local.inp.addressInp"
             @input="handleInp('addressInp')"
           />
+          <div
+            class="error__box"
+            :class="{ error__active: props.addressError.isOccured }"
+          >
+            <p
+              class="error__text"
+              :class="{ active__text: props.addressError.isOccured }"
+            >
+              {{ props.addressError.text }}
+            </p>
+          </div>
         </div>
         <div class="input__box select__area">
-          <span class="place__holder" :class="{ hidden: local.hidden.cityInp }"
+          <span
+            class="place__holder"
+            :class="{
+              hidden: local.hidden.cityInp,
+              error__placeholder: props.cityError.isOccured,
+            }"
             >City</span
           >
           <select
             name="city"
             id="select1"
+            :class="{
+              error__inp: props.cityError.isOccured,
+            }"
             v-model="local.inp.cityInp"
             @change="handleSelect('cityInp')"
           >
@@ -82,22 +147,48 @@ function handleSelect(type) {
             <option value="Saint-Petersburg">Saint-Petersburg</option>
             <option value="Ekaterinburg">Ekaterinburg</option>
           </select>
+          <div
+            class="error__box"
+            :class="{ error__active: props.cityError.isOccured }"
+          >
+            <p
+              class="error__text"
+              :class="{ active__text: props.cityError.isOccured }"
+            >
+              {{ props.cityError.text }}
+            </p>
+          </div>
         </div>
         <div class="input__box select__area">
           <span
             class="place__holder"
-            :class="{ hidden: local.hidden.paymentInp }"
+            :class="{
+              hidden: local.hidden.paymentInp,
+              error__placeholder: props.paymentError.isOccured,
+            }"
             >Payment</span
           >
           <select
             name="payment"
             id="select2"
+            :class="{ error__inp: props.paymentError.isOccured }"
             v-model="local.inp.paymentInp"
             @change="handleSelect('paymentInp')"
           >
             <option value="Online">Online</option>
             <option value="By cash">By cash</option>
           </select>
+          <div
+            class="error__box"
+            :class="{ error__active: props.paymentError.isOccured }"
+          >
+            <p
+              class="error__text"
+              :class="{ active__text: props.paymentError.isOccured }"
+            >
+              {{ props.paymentError.text }}
+            </p>
+          </div>
         </div>
       </div>
     </form>
@@ -156,6 +247,12 @@ function handleSelect(type) {
   position: absolute;
   left: 2rem;
   bottom: 1.1rem;
+
+  transition: bottom 0.5s ease;
+}
+
+.error__placeholder {
+  bottom: 3.6rem;
 }
 
 .hidden {
@@ -172,6 +269,10 @@ input {
 
 select {
   width: 327px;
+}
+
+.error__active {
+  height: 21px !important;
 }
 
 @media screen and (width > 768px) {

@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, reactive, ref } from "vue";
 
+import { useRouter } from "vue-router";
 import useUsers from "../../../composables/useUsers";
 import useGoods from "../../../composables/useGoods";
 
@@ -16,10 +17,20 @@ const local = reactive({
     cityInp: "",
     paymentInp: "",
   },
+  error: {
+    nameInp: { text: "", isOccured: false },
+    surnameInp: { text: "", isOccured: false },
+    mobileInp: { text: "", isOccured: false },
+    addressInp: { text: "", isOccured: false },
+    cityInp: { text: "", isOccured: false },
+    paymentInp: { text: "", isOccured: false },
+  },
 });
 
 const userId = useUsers().getActUser();
 const user = useUsers().getUser(userId);
+
+const router = useRouter();
 
 const totalSum = ref(0);
 
@@ -32,15 +43,28 @@ function compareFilling(text) {
       answer = 1;
       break;
     case "EmptyError":
-      console.log("error");
+      local.error[text].text = "Required to be filled!";
+      local.error[text].isOccured = true;
       break;
   }
+
+  return answer;
 }
 
 function btnAction() {
-  let x3 = compareFilling("addressInp");
-  let x4 = compareFilling("cityInp");
-  let x5 = compareFilling("paymentInp");
+  let x1 = compareFilling("nameInp");
+  let x2 = compareFilling("surnameInp");
+  let x3 = compareFilling("mobileInp");
+  let x4 = compareFilling("addressInp");
+  let x5 = compareFilling("cityInp");
+  let x6 = compareFilling("paymentInp");
+
+  const controlSum = x1 + x2 + x3 + x4 + x5 + x6;
+
+  if (controlSum == 6) {
+    console.log("Done");
+    router.push({ path: `/user/${user.name}/order`, replace: true });
+  }
 }
 
 onMounted(() => {
@@ -52,6 +76,9 @@ onMounted(() => {
 
 function handleInp(type, info) {
   local.inp[type] = info;
+
+  local.error[type].text = "";
+  local.error[type].isOccured = false;
 }
 </script>
 
@@ -62,9 +89,12 @@ function handleInp(type, info) {
     </div>
     <div class="form__cont">
       <OrderForm
-        :userName="user.firstName"
-        :userSurname="user.lastName"
-        :userEmail="user.userEmail"
+        :nameError="local.error.nameInp"
+        :surnameError="local.error.surnameInp"
+        :mobileError="local.error.mobileInp"
+        :addressError="local.error.addressInp"
+        :cityError="local.error.cityInp"
+        :paymentError="local.error.paymentInp"
         @dataInp="handleInp"
       />
     </div>

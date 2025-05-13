@@ -1,4 +1,32 @@
-<script setup></script>
+<script setup>
+import { reactive } from "vue";
+
+const emit = defineEmits(["dataInp"]);
+
+const local = reactive({
+  inp: {
+    nameInp: "",
+    surnameInp: "",
+    mobileInp: "",
+    addressInp: "",
+    cityInp: "",
+    paymentInp: "",
+  },
+  hidden: {
+    cityInp: false,
+    paymentInp: false,
+  },
+});
+
+function handleInp(type) {
+  emit("dataInp", type, local.inp[type]);
+}
+
+function handleSelect(type) {
+  local.hidden[type] = true;
+  emit("dataInp", type, local.inp[type]);
+}
+</script>
 
 <template>
   <div class="form__wrapper">
@@ -8,26 +36,65 @@
       </div>
       <div class="input__cont">
         <div class="input__box">
-          <input type="text" placeholder="First name" />
+          <input
+            type="text"
+            placeholder="First name"
+            v-model="local.inp.nameInp"
+            @input="handleInp('nameInp')"
+          />
         </div>
         <div class="input__box">
-          <input type="text" placeholder="Last name" />
+          <input
+            type="text"
+            placeholder="Last name"
+            v-model="local.inp.surnameInp"
+            @input="handleInp('surnameInp')"
+          />
         </div>
         <div class="input__box">
-          <input type="tel" placeholder="Mobile phone" />
+          <input
+            type="tel"
+            placeholder="Mobile phone"
+            v-model="local.inp.mobileInp"
+            @input="handleInp('mobileInp')"
+          />
         </div>
         <div class="input__box">
-          <input type="text" placeholder="Address" />
+          <input
+            type="text"
+            placeholder="Address"
+            v-model="local.inp.addressInp"
+            @input="handleInp('addressInp')"
+          />
         </div>
-        <div class="input__box">
-          <select>
-            <option value="city" selected disabled hidden>City</option>
+        <div class="input__box select__area">
+          <span class="place__holder" :class="{ hidden: local.hidden.cityInp }"
+            >City</span
+          >
+          <select
+            name="city"
+            id="select1"
+            v-model="local.inp.cityInp"
+            @change="handleSelect('cityInp')"
+          >
             <option value="Moscow">Moscow</option>
+            <option value="Minsk">Minsk</option>
+            <option value="Saint-Petersburg">Saint-Petersburg</option>
+            <option value="Ekaterinburg">Ekaterinburg</option>
           </select>
         </div>
-        <div class="input__box">
-          <select>
-            <option value="payment" selected desabled hidden>Payment</option>
+        <div class="input__box select__area">
+          <span
+            class="place__holder"
+            :class="{ hidden: local.hidden.paymentInp }"
+            >Payment</span
+          >
+          <select
+            name="payment"
+            id="select2"
+            v-model="local.inp.paymentInp"
+            @change="handleSelect('paymentInp')"
+          >
             <option value="Online">Online</option>
             <option value="By cash">By cash</option>
           </select>
@@ -61,17 +128,38 @@
 .input__cont {
   display: grid;
   grid-template-columns: 1fr;
+  place-items: center;
   row-gap: 2rem;
 }
 
 .input__box {
-  width: 100%;
+  width: fit-content;
   height: fit-content;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+}
+
+.select__area {
+  position: relative;
+}
+
+.place__holder {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--select-color);
+
+  user-select: none;
+
+  position: absolute;
+  left: 2rem;
+  bottom: 1.1rem;
+}
+
+.hidden {
+  display: none;
 }
 
 .input__name {

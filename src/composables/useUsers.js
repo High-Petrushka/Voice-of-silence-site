@@ -111,6 +111,14 @@ function checkName(text) {
   }
 }
 
+function checkFilling(text) {
+  if (text == "") {
+    return "EmptyError";
+  } else {
+    return "OK"
+  }
+}
+
 function addUser(usrEmail, usrPass, firstName, lastName) {
   let userId;
 
@@ -204,5 +212,5 @@ function quit() {
 }
 
 export default function useUsers() {
-  return { userList, compareUser, addUser, checkEmail, checkPass, checkName, setUser, getUser, getActUser, addToCart, delFromCart, quit };
+  return { userList, compareUser, addUser, checkEmail, checkPass, checkName, checkFilling, setUser, getUser, getActUser, addToCart, delFromCart, quit };
 }

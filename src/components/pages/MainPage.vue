@@ -12,6 +12,7 @@ const local = reactive({
     text: "Featuring breakthrough sound technology, this speaker brings your entertainment to life with superior clarity, depth, and dimension.",
     image: "src/assets/advertisement/marshall_action_III.jpg",
   },
+  patternShow: false,
 });
 </script>
 
@@ -23,7 +24,7 @@ const local = reactive({
     :adImg="local.adInfo.image"
   />
   <LocationCard />
-  <Pattern />
+  <Pattern v-if="local.patternShow" />
 </template>
 
 <style scoped>

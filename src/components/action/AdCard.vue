@@ -1,9 +1,17 @@
 <script setup>
+import { useRouter } from "vue-router";
+
 const props = defineProps({
   adTitle: "",
   adText: "",
   adImg: "",
 });
+
+const router = useRouter();
+
+function btnAction() {
+  router.push({ path: "/shop/Speakers/0" });
+}
 </script>
 
 <template>
@@ -22,7 +30,7 @@ const props = defineProps({
           </p>
         </div>
         <div class="ad__btn">
-          <button>Show now</button>
+          <button @click="btnAction">Show now</button>
         </div>
       </div>
     </div>

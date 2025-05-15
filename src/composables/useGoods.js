@@ -210,12 +210,59 @@ const speakersList = ref([
 
 const accessoriesList = ref([
   {
-    name: "",
+    name: "ddHiFi TC35M2",
     id: 0,
-    price: "",
-    descript: [],
-    type: "",
-    image: "",
+    price: "49.00",
+    descript: [
+      "The TC35M2 is designed to bring convenience to wired earphones users. Compared with the previous generation, this 2nd generation upgraded the shell craftsmanship, and improved the strength of the plug, which is more durable and reliable.",
+      "The earphone socket comes with detection function, which can identify if the earphone is connected or not. The TC35M2 also supports four-section 3.5mm earphone cable, allowing answering phone calls and music playback controls.",
+      "The TC35M2 supports commonly used lossless music apps, such as Apple Music, QQ Music, Netease Cloud Music, Sony Lossless Music, etc. Most of the lossless music formats offered by music apps are 44.1kHz, 96kHz or 192kHz, while the TC35M2 supports PCM decoding up to 384kHz.",
+      "Being equipped with stand-alone decoding chip and OP-AMP chip, the TC35M2 provides stable performance and output power, and can basically use with most of the 3.5mm earphones available on the market.",
+    ],
+    type: "Accessories",
+    image: "/src/assets/products/accessories/ddHiFi_TC35M2.jpg",
+  },
+  {
+    name: "ddHiFi RC30A",
+    id: 1,
+    price: "79.00",
+    descript: [
+      "The structure of the cable is designed to make the two sets of signal wires into a coaxial structure, and add a layer of shielding to the outermost layer so as to form a double-shielded coaxial structure with three layers of conductors and three layers of insulation.",
+      "The main core conductor is made of two kinds of pure silver with different diameters, and mixed with silver-plated OCC and Furukawa silver-copper alloy.",
+      "The main core and grounding plate of the RCA plug are made of high-purity copper, and the outer layer is electroplated with thick 24K real gold, which has excellent conductivity.",
+      "There is no long sleeve at the joint of the cable end, since the fixation is completed internally.",
+    ],
+    type: "Accessories",
+    image: "/src/assets/products/accessories/ddHiFi_RC30A.jpg",
+  },
+  {
+    name: "FiiO SnowSky Echo Mini",
+    id: 2,
+    price: "69.00",
+    descript: [
+      "Features the wireless connection support.",
+      "Two outputs for earphones: 3.5-mm and 4.5-mm.",
+      "Has a formats support such as MP3, FLAC, WAV, ALAC, APE, DSD, and other popular audio formats.",
+      "Capable to reproduce files with the resolution up to 24 bits.",
+      "The screen lets you to easily control reproduction, setup parameters, and look up information about the music records.",
+      "The integrated battery with the capacity of 1100mah supplies up to 15 hours of work while playing the music.",
+      "It supports memory cards with a capacity of up to 256 GB.",
+    ],
+    type: "Accessories",
+    image: "/src/assets/products/accessories/fiio_echo_mini_blue.jpg",
+  },
+  {
+    name: "FiiO KA17",
+    id: 3,
+    price: "209.00",
+    descript: [
+      "The KA17 is a professional HiFi USB headphone audio adapter designed for connecting to mobile phones, tablets, and computers.",
+      "he latest USB dongle product, equipped with two ES9069Q DAC chips, further reduces the digital noise inside the DAC, achieving a dynamic range of 130dB and total harmonic distortion of -120dB, providing a purer sound background.",
+      "The KA17 is equipped with desktop mode and dual Type-C interfaces. When powered by USB, it can operate in desktop mode with a single-end output power of up to 270mW+270mW and balanced output power of 650mW+650mW, capable of driving most headphones.",
+      "Adjusting the PEQ through the FIIO Control APP to personalize the sound. This allows you to correct any deficiencies in the headphone frequency response curve and smooth out any peaks and dips.",
+    ],
+    type: "Accessories",
+    image: "/src/assets/products/accessories/fiio_ka17.jpg",
   },
 ]);
 
@@ -271,6 +318,34 @@ const vinylList = ref([
     ],
     type: "Vinyl",
     image: "/src/assets/products/vinyl/pablo_honey.jpg",
+  },
+  {
+    name: "Nirvana - Nirvana LP",
+    id: 4,
+    price: "30.00",
+    descript: [
+      "Limited 150gm vinyl LP pressing including digital download.",
+      "Originally released in 2002, Nirvana was a collection that featured hits and fan favorites as well as the rare and previously unreleased studio version of 'You Know You're Right,' the last song the band ever recorded, available exclusively on this compilation.",
+      "Nirvana was released following the settlement of a long-standing legal dispute between Cobain's widow, Courtney Love, and surviving Nirvana members Krist Novoselic and Dave Grohl.",
+      "Much of the dispute centered around the song 'You Know You're Right' which was recorded during the band's final studio session, in January 1994.",
+      "Nirvana was the third Nirvana album to be released following the death of singer/ guitarist Kurt Cobain in April 1994, and the first to feature studio material.",
+    ],
+    type: "Vinyl",
+    image: "/src/assets/products/vinyl/nirvana.jpg",
+  },
+  {
+    name: "THE SMITHS - THE QUEEN IS DEAD",
+    id: 5,
+    price: "32.00",
+    descript: [
+      "Digitally remastered edition of this 1986 album from the legendary British quartet.",
+      "The Queen Is Dead is The Smiths' great leap forward, taking the band to new musical and lyrical heights.",
+      "Opening with the storming track, the album is harder rocking record than anything the band had attempted before.",
+      "Johnny Marr has created here a wide range of guitar styles that provide a musical bed for Morrissey's best set of lyrics.",
+      "From which is crafted some of their finest, most affective songs, particularly 'The Boy with the Thorn in His Side' and the epic 'There Is a Light That Never Goes Out,' two masterpieces that provide the foundation for a remarkable album.",
+    ],
+    type: "Vinyl",
+    image: "/src/assets/products/vinyl/smiths_queen_is_dead.jpg",
   }
 ]);
 

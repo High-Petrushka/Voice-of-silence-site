@@ -12,17 +12,13 @@ const local = reactive({
     text: "Featuring breakthrough sound technology, this speaker brings your entertainment to life with superior clarity, depth, and dimension.",
     image: "/Voice-of-silence-site/assets/marshall_action_III.jpg",
   },
-  patternShow: false,
+  patternShow: true,
 });
 </script>
 
 <template>
   <MainSlider />
-  <AdCard
-    :adTitle="local.adInfo.title"
-    :adText="local.adInfo.text"
-    :adImg="local.adInfo.image"
-  />
+  <AdCard :adTitle="local.adInfo.title" :adText="local.adInfo.text" :adImg="local.adInfo.image" />
   <LocationCard />
   <Pattern v-if="local.patternShow" />
 </template>

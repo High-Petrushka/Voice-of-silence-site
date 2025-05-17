@@ -10,7 +10,8 @@ const local = reactive({
   adInfo: {
     title: "Meet Marshall Acton III",
     text: "Featuring breakthrough sound technology, this speaker brings your entertainment to life with superior clarity, depth, and dimension.",
-    image: "/Voice-of-silence-site/assets/marshall_action_III.jpg",
+    image:
+      "/Voice-of-silence-site/src/assets/advertisement/marshall_action_III.jpg",
   },
   patternShow: true,
 });

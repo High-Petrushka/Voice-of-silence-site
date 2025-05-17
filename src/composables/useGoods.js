@@ -15,7 +15,7 @@ const headphonesList = ref([
       "Carry your headphones effortlessly in the redesigned case",
     ],
     type: "Headphones",
-    image: "/src/assets/products/headphones/sony-wh1000xm5-black.jpg",
+    image: "/Voice-of-silence-site/src/assets/headphones/sony-wh1000xm5-black.jpg",
   },
   {
     name: "Marshall Major IV",
@@ -29,7 +29,7 @@ const headphonesList = ref([
       "Included components: Major IV Headphones, 3.5mm audio cord, User Manual and legal and safety information, USB-C charging cable",
     ],
     type: "Headphones",
-    image: "/src/assets/products/headphones/marshall_major_iv_black.jpg",
+    image: "/Voice-of-silence-site/src/assets/headphones/marshall_major_iv_black.jpg",
   },
   {
     name: "Bose QuietComfort Ultra",
@@ -44,7 +44,7 @@ const headphonesList = ref([
       "Hear and be heard clearly on calls with a revolutionary mic system.",
     ],
     type: "Headphones",
-    image: "/src/assets/products/headphones/QuiteComfort_Ultra.jpg",
+    image: "/Voice-of-silence-site/src/assets/headphones/QuiteComfort_Ultra.jpg",
   },
   {
     name: "Space One Pro",
@@ -58,7 +58,7 @@ const headphonesList = ref([
       "All-Day Comfort: Listen for longer with the pressure-relieving headband and soft earcups.",
     ],
     type: "Headphones",
-    image: "/src/assets/products/headphones/anker_space_one_pro_black.jpg",
+    image: "/Voice-of-silence-site/src/assets/headphones/anker_space_one_pro_black.jpg",
   },
   {
     name: "MoonDrop Stellaris",
@@ -72,7 +72,7 @@ const headphonesList = ref([
       "The sound performance is highly consistent with the VDSF Target Response and optimized for listening characteristics, bringing a more accurate sound reproduction with richer, more natural details.",
     ],
     type: "Headphones",
-    image: "/src/assets/products/headphones/MoonDrop_Stellaris.jpg",
+    image: "/Voice-of-silence-site/src/assets/headphones/MoonDrop_Stellaris.jpg",
   },
   {
     name: "FiiO FD3",
@@ -87,7 +87,7 @@ const headphonesList = ref([
       "Whether you're commuting or simply relaxing at home, the FiiO FD3 earphones provide an immersive audio experience that is sure to impress.",
     ],
     type: "Headphones",
-    image: "/src/assets/products/headphones/fiio_fd3_black.jpg",
+    image: "/Voice-of-silence-site/src/assets/headphones/fiio_fd3_black.jpg",
   },
   {
     name: "Marshall Monitor III",
@@ -101,7 +101,7 @@ const headphonesList = ref([
       "Make your sound more spacious with Monitor III A.N.C. Our new Soundstage spatial audio technology releases your music by moving it out of your head and into a virtual room, so that you feel more immersed.",
     ],
     type: "Headphones",
-    image: "/src/assets/products/headphones/Marshall_Monitor_III_ANC_Black.jpg",
+    image: "/Voice-of-silence-site/src/assets/headphones/Marshall_Monitor_III_ANC_Black.jpg",
   },
   {
     name: "Bowers & Wilkins PX7 S2e",
@@ -114,7 +114,7 @@ const headphonesList = ref([
       "Easily control your audio environment with wireless headphones. The Bowers & Wilkins music app offers direct streaming and voice assistant support, ensuring your sound experience is tailored according to your desires.",
     ],
     type: "Headphones",
-    image: "/src/assets/products/headphones/bw_px7s2e_gray.jpg",
+    image: "/Voice-of-silence-site/src/assets/headphones/bw_px7s2e_gray.jpg",
   }
 ]);
 
@@ -132,7 +132,7 @@ const speakersList = ref([
       "While staying true to the iconic design that speaks to the brand’s heritage, this generation takes a more sustainable approach with a PVC-free build made from 70% recycled plastic and only vegan materials.",
     ],
     type: "Speakers",
-    image: "/src/assets/products/speakers/marshall_acton_iii_black.jpg",
+    image: "/Voice-of-silence-site/src/assets/speakers/marshall_acton_iii_black.jpg",
   },
   {
     name: "JBL Flip 7",
@@ -146,7 +146,7 @@ const speakersList = ref([
       "Whether we're hosting a beach party, relaxing in our backyard, or setting the mood for a cozy night in, the Flip 7 is designed to enhance any experience, anywhere life takes us.",
     ],
     type: "Speakers",
-    image: "/src/assets/products/speakers/jbl_flip7_black.jpg",
+    image: "/Voice-of-silence-site/src/assets/speakers/jbl_flip7_black.jpg",
   },
   {
     name: "Anker Soundcore Motion X500",
@@ -160,7 +160,7 @@ const speakersList = ref([
       "Fully Waterproof With IPX7 protection, you can enjoy worry-free listening by the pool, at the beach, or even if it's raining.",
     ],
     type: "Speakers",
-    image: "/src/assets/products/speakers/anker_Motion_X500_black.jpg",
+    image: "/Voice-of-silence-site/src/assets/speakers/anker_Motion_X500_black.jpg",
   },
   {
     name: "Bose SoundLink Max",
@@ -176,7 +176,7 @@ const speakersList = ref([
       "Water and dust-proof features mean your music can still play through spills and outdoor elements.",
     ],
     type: "Speakers",
-    image: "/src/assets/products/speakers/Bose_SoundLink_Max_Blue.jpg",
+    image: "/Voice-of-silence-site/src/assets/speakers/Bose_SoundLink_Max_Blue.jpg",
   },
   {
     name: "Marshall Emberton III",
@@ -190,7 +190,7 @@ const speakersList = ref([
       "Music comes first, but we know life gets busy. Emberton III comes with a built-in microphone, making hands-free talking much simpler and clearer. You can take calls while getting your day started or preparing for a gig.",
     ],
     type: "Speakers",
-    image: "/src/assets/products/speakers/Marshall-Emberton-III-Cream_1.jpg",
+    image: "/Voice-of-silence-site/src/assets/speakers/Marshall-Emberton-III-Cream_1.jpg",
   },
   {
     name: "Bose SoundLink Revolve II",
@@ -204,7 +204,7 @@ const speakersList = ref([
       "The rechargeable lithium-ion battery plays up to 13 hours — for full-day listening. Sure, some other speakers may play longer, but not without compromising the deep, powerful bass you'll get from ours.",
     ],
     type: "Speakers",
-    image: "/src/assets/products/speakers/bose_soundlink_revolve_II.jpg",
+    image: "/Voice-of-silence-site/src/assets/speakers/bose_soundlink_revolve_II.jpg",
   },
 ]);
 
@@ -220,7 +220,7 @@ const accessoriesList = ref([
       "Being equipped with stand-alone decoding chip and OP-AMP chip, the TC35M2 provides stable performance and output power, and can basically use with most of the 3.5mm earphones available on the market.",
     ],
     type: "Accessories",
-    image: "/src/assets/products/accessories/ddHiFi_TC35M2.jpg",
+    image: "/Voice-of-silence-site/src/assets/accessories/ddHiFi_TC35M2.jpg",
   },
   {
     name: "ddHiFi RC30A",
@@ -233,7 +233,7 @@ const accessoriesList = ref([
       "There is no long sleeve at the joint of the cable end, since the fixation is completed internally.",
     ],
     type: "Accessories",
-    image: "/src/assets/products/accessories/ddHiFi_RC30A.jpg",
+    image: "/Voice-of-silence-site/src/assets/accessories/ddHiFi_RC30A.jpg",
   },
   {
     name: "FiiO SnowSky Echo Mini",
@@ -249,7 +249,7 @@ const accessoriesList = ref([
       "It supports memory cards with a capacity of up to 256 GB.",
     ],
     type: "Accessories",
-    image: "/src/assets/products/accessories/fiio_echo_mini_blue.jpg",
+    image: "/Voice-of-silence-site/src/assets/accessories/fiio_echo_mini_blue.jpg",
   },
   {
     name: "FiiO KA17",
@@ -262,7 +262,7 @@ const accessoriesList = ref([
       "Adjusting the PEQ through the FIIO Control APP to personalize the sound. This allows you to correct any deficiencies in the headphone frequency response curve and smooth out any peaks and dips.",
     ],
     type: "Accessories",
-    image: "/src/assets/products/accessories/fiio_ka17.jpg",
+    image: "/Voice-of-silence-site/src/assets/accessories/fiio_ka17.jpg",
   },
 ]);
 
@@ -278,7 +278,7 @@ const vinylList = ref([
       "Unlike the North American version, this version has 'Made in Czech Republic' printed on the back of the gatefold sleeve, labels, inner sleeves and foldout insert.",
     ],
     type: "Vinyl",
-    image: "/src/assets/products/vinyl/papercuts.jpg",
+    image: "/Voice-of-silence-site/src/assets/vinyl/papercuts.jpg",
   },
   {
     name: "BLACK SABBATH PARANOID",
@@ -291,7 +291,7 @@ const vinylList = ref([
       "It is often regarded as one of the most quintessential and influential albums in heavy metal history.",
     ],
     type: "Vinyl",
-    image: "/src/assets/products/vinyl/paranoid.jpg",
+    image: "/Voice-of-silence-site/src/assets/vinyl/paranoid.jpg",
   },
   {
     name: "Deftones - White Pony",
@@ -304,7 +304,7 @@ const vinylList = ref([
       "To this end, it is generally regarded by fans and critics alike as their most mature outing.",
     ],
     type: "Vinyl",
-    image: "/src/assets/products/vinyl/white_pony.jpg",
+    image: "/Voice-of-silence-site/src/assets/vinyl/white_pony.jpg",
   },
   {
     name: "Radiohead - Pablo Honey",
@@ -317,7 +317,7 @@ const vinylList = ref([
       "The standout single 'Creep' was the international hit that helped propel Radiohead and Pablo Honey to popular acclaim.",
     ],
     type: "Vinyl",
-    image: "/src/assets/products/vinyl/pablo_honey.jpg",
+    image: "/Voice-of-silence-site/src/assets/vinyl/pablo_honey.jpg",
   },
   {
     name: "Nirvana - Nirvana LP",
@@ -331,7 +331,7 @@ const vinylList = ref([
       "Nirvana was the third Nirvana album to be released following the death of singer/ guitarist Kurt Cobain in April 1994, and the first to feature studio material.",
     ],
     type: "Vinyl",
-    image: "/src/assets/products/vinyl/nirvana.jpg",
+    image: "/Voice-of-silence-site/src/assets/vinyl/nirvana.jpg",
   },
   {
     name: "THE SMITHS - THE QUEEN IS DEAD",
@@ -345,7 +345,7 @@ const vinylList = ref([
       "From which is crafted some of their finest, most affective songs, particularly 'The Boy with the Thorn in His Side' and the epic 'There Is a Light That Never Goes Out,' two masterpieces that provide the foundation for a remarkable album.",
     ],
     type: "Vinyl",
-    image: "/src/assets/products/vinyl/smiths_queen_is_dead.jpg",
+    image: "/Voice-of-silence-site/src/assets/vinyl/smiths_queen_is_dead.jpg",
   }
 ]);
 

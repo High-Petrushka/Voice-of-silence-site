@@ -3,6 +3,6 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/Voice-of-silence-site/",
+  base: "https://high-petrushka.github.io/Voice-of-silence-site/",
   plugins: [vue()],
 })
